@@ -25,6 +25,6 @@ after_script:
 branches:
   only:
     - blog-source
-env:
+ env:
  global:
    - GH_REF: github.com/ycg31/ycg31.github.io.git
