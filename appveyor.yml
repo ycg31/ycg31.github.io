@@ -23,5 +23,5 @@ on_success:
 - cd %APPVEYOR_BUILD_FOLDER%\public
 - git add .
 - git commit -m "Update docs"
-- git push --force --quiet git@github.com/ycg31/ycg31.github.io.git master:master
+- git push --force --quiet https://github.com/ycg31/ycg31.github.io.git master:master
 - appveyor AddMessage "Static Site Updated"
