@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -94,13 +94,16 @@
 
 
 
+<meta name="description" content="有了这个，就不用到处去找重复的了">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="杂记">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="杂记">
+<meta property="og:description" content="有了这个，就不用到处去找重复的了">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="杂记">
+<meta name="twitter:description" content="有了这个，就不用到处去找重复的了">
 
 
 
@@ -108,7 +111,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -118,9 +121,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'QXGKA799I9',
+      apiKey: '5b6298d4cd6f9df0eb20f97672f39916',
+      indexName: 'index',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -135,7 +138,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>杂记</title>
   
 
 
@@ -167,12 +170,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">杂记</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">1</p>
+        <p class="site-subtitle">记录网上生活</p>
       
   </div>
 
@@ -202,6 +205,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -223,9 +246,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -254,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/V2ray使用TLS/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycg31">
@@ -263,7 +324,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -273,7 +334,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/19/V2ray使用TLS/" itemprop="url">V2ray使用TLS</a></h1>
+                <a class="post-title-link" href="/2017/08/19/Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本/" itemprop="url">Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本</a></h1>
         
 
         <div class="post-meta">
@@ -285,7 +346,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T05:14:34+08:00">
                 2017-08-20
               </time>
             
@@ -325,50 +386,23 @@
       
         
           
-            <p><a href="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1503032917499&amp;di=67363c688d949aa5c6a3ed50992c0fee&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.igooda.cn%2Fuploads%2Fallimg%2F141125%2F112R61115-0.JPG" target="_blank" rel="external"><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1503032917499&amp;di=67363c688d949aa5c6a3ed50992c0fee&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.igooda.cn%2Fuploads%2Fallimg%2F141125%2F112R61115-0.JPG" alt="img"></a></p>
-<h1 id="1-TLS"><a href="#1-TLS" class="headerlink" title="1. TLS"></a>1. TLS</h1><p>从 v1.19 起引入了 TLS，TLS 中文译名是传输层安全，如果你没听说过，请 Google 了解一下。以下给出些我认为介绍较好的文章链接：</p>
-<p><a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" target="_blank" rel="external">SSL/TLS协议运行机制的概述</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/%E5%82%B3%E8%BC%B8%E5%B1%A4%E5%AE%89%E5%85%A8%E5%8D%94%E8%AD%B0" target="_blank" rel="external">传输层安全协议</a></p>
-<p>Shadowsocks 的作者 clowwindy 却认为<a href="https://gist.github.com/clowwindy/5947691" target="_blank" rel="external">翻墙不该用 SSL</a>。那么到底该不该用？对此我不作评论，各位自行思考。这里我只教大家如何开启 TLS。</p>
-<h2 id="1-1-注册一个域名"><a href="#1-1-注册一个域名" class="headerlink" title="1.1. 注册一个域名"></a>1.1. 注册一个域名</h2><p>如果已经注册有域名了可以跳过。 域名有免费的有付费的，总体来说付费的会优于免费的，具体差别请 Google。如果你不舍得为一个域名每年花点钱，用个免费域名也可以。为了方便，这里我将以免费域名为例。</p>
-<p>关于如何注册一个免费域名，我发现有一位网友写得很详细，就不多说了。请参考：</p>
-<p><a href="https://doub.io/dbwz-3/" target="_blank" rel="external">教你申请.tk/.ml/.cf/.gq/.ga等免费域名</a></p>
-<p>至于注册其它付费的域名请 Google 吧，差不多都是大同小异的。</p>
-<p>注册好域名之后务必记得设置 DNS 解析到你的 VPS !</p>
-<p>据了解，在 freenom 注册的域名在对应的 IP 上要有一个网站，否则注册之后域名会被回收。如果您只是想用免费域名在 V2Ray 用一下 TLS，又不愿意（懒得、不会）建站，建议您看看您的亲朋好友谁有手上有域名的，向他们要一个二级域名就行了</p>
-<p>以下假设注册的域名为 mydomain.me，请将之替换成自己的域名。</p>
-<h2 id="1-2-证书生成"><a href="#1-2-证书生成" class="headerlink" title="1.2. 证书生成"></a>1.2. 证书生成</h2><p>使用 TLS 需要证书，证书也有免费付费的，同样的这里使用免费证书，证书认证机构为 <a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s Encrypt</a>。 证书的生成有许多方法，这里使用的是比较简单的方法：使用 <a href="https://github.com/Neilpang/acme.sh" target="_blank" rel="external">acme.sh</a> 脚本生成，本部分说明部分内容参考于<a href="https://github.com/Neilpang/acme.sh/blob/master/README.md" target="_blank" rel="external">acme.sh README</a>。</p>
-<p>证书有两种，一种是 ECC 证书（内置公钥是 ECDSA 公钥），一种是 RSA 证书（内置 RSA 公钥）。简单来说，同等长度 ECC 比 RSA 更安全,也就是说在具有同样安全性的情况下，ECC 的密钥长度比 RSA 短得多（加密解密会更快）。但问题是 ECC 的兼容性会差一些，Android 4.x 以下和 Windows XP 不支持。只要您的设备不是非常老的老古董，强烈建议使用 ECC 证书。</p>
-<p>以下将给出这两类证书的生成方法，请大家根据自身的情况自行选择其中一种证书类型。</p>
-<p>证书生成只需在服务器上操作。</p>
-<h3 id="1-2-1-安装-acme-sh"><a href="#1-2-1-安装-acme-sh" class="headerlink" title="1.2.1. 安装 acme.sh"></a>1.2.1. 安装 acme.sh</h3><p>执行以下命令，acme.sh 会安装到 ~/.acme.sh 目录下。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">$ curl  https://get.acme.sh | sh</div><div class="line">% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</div><div class="line">                               Dload  Upload   Total   Spent    Left  Speed</div><div class="line">100   671  100   671    0     0    680      0 --:--:-- --:--:-- --:--:--   679</div><div class="line">% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</div><div class="line">                               Dload  Upload   Total   Spent    Left  Speed</div><div class="line">100  112k  100  112k    0     0   690k      0 --:--:-- --:--:-- --:--:--  693k</div><div class="line">[Fri 30 Dec 01:03:32 GMT 2016] Installing from online archive.</div><div class="line">[Fri 30 Dec 01:03:32 GMT 2016] Downloading https://github.com/Neilpang/acme.sh/archive/master.tar.gz</div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] Extracting master.tar.gz</div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] Installing to /home/user/.acme.sh</div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] Installed to /home/user/.acme.sh/acme.sh</div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] Installing <span class="built_in">alias</span> to <span class="string">'/home/user/.profile'</span></div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] OK, Close and reopen your terminal to start using acme.sh</div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] Installing cron job</div><div class="line">no crontab <span class="keyword">for</span> user</div><div class="line">no crontab <span class="keyword">for</span> user</div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] Good, bash is found, so change the shebang to use bash as preferred.</div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] OK</div><div class="line">[Fri 30 Dec 01:03:33 GMT 2016] Install success!</div></pre></td></tr></table></figure>
-<p>安装成功后执行 <code>source ~/.bashrc</code> 以确保脚本所设置的命令别名生效。</p>
-<p>如果安装报错，那么可能是因为系统缺少 acme.sh 所需要的依赖项，acme.sh 的依赖项主要是 netcat(nc)，我们通过以下命令来安装这些依赖项，然后重新安装一遍 acme.sh:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get -y install netcat</div></pre></td></tr></table></figure>
-<h3 id="1-2-2-使用-acme-sh-生成证书"><a href="#1-2-2-使用-acme-sh-生成证书" class="headerlink" title="1.2.2. 使用 acme.sh 生成证书"></a>1.2.2. 使用 acme.sh 生成证书</h3><h4 id="证书生成"><a href="#证书生成" class="headerlink" title="证书生成"></a>证书生成</h4><p>执行以下命令生成证书：</p>
-<p>以下的命令会临时监听 80 端口，请确保执行该命令前 80 端口没有使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">$ sudo ~/.acme.sh/acme.sh --issue -d mydomain.me --standalone -k ec-256</div><div class="line">[Fri Dec 30 08:59:12 HKT 2016] Standalone mode.</div><div class="line">[Fri Dec 30 08:59:12 HKT 2016] Single domain=<span class="string">'mydomain.me'</span></div><div class="line">[Fri Dec 30 08:59:12 HKT 2016] Getting domain auth token <span class="keyword">for</span> each domain</div><div class="line">[Fri Dec 30 08:59:12 HKT 2016] Getting webroot <span class="keyword">for</span> domain=<span class="string">'mydomain.me'</span></div><div class="line">[Fri Dec 30 08:59:12 HKT 2016] _w=<span class="string">'no'</span></div><div class="line">[Fri Dec 30 08:59:12 HKT 2016] Getting new-authz <span class="keyword">for</span> domain=<span class="string">'mydomain.me'</span></div><div class="line">[Fri Dec 30 08:59:14 HKT 2016] The new-authz request is ok.</div><div class="line">[Fri Dec 30 08:59:14 HKT 2016] mydomain.me is already verified, skip.</div><div class="line">[Fri Dec 30 08:59:14 HKT 2016] mydomain.me is already verified, skip http-01.</div><div class="line">[Fri Dec 30 08:59:14 HKT 2016] mydomain.me is already verified, skip http-01.</div><div class="line">[Fri Dec 30 08:59:14 HKT 2016] Verify finished, start to sign.</div><div class="line">[Fri Dec 30 08:59:16 HKT 2016] Cert success.</div><div class="line">-----BEGIN CERTIFICATE-----</div><div class="line">MIIEMTCCAxmgAwIBAgISA1+gJF5zwUDjNX/6Xzz5fo3lMA0GCSqGSIb3DQEBCwUA</div><div class="line">MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQD</div><div class="line">ExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMzAeFw0xNjEyMjkyMzU5MDBaFw0x</div><div class="line">NzAzMjkyMzU5MDBaMBcxFTATBgNVBAMTDHdlYWtzYW5kLmNvbTBZMBMGByqGSM49</div><div class="line">****************************************************************</div><div class="line">4p40tm0aMB837XQ9jeAXvXulhVH/7/wWZ8/vkUUvuHSCYHagENiq/3DYj4a85Iw9</div><div class="line">+6u1r7atYHJ2VwqSamiyTGDQuhc5wdXIQxY/YQQqkAmn5tLsTZnnOavc4plANT40</div><div class="line">zweiG8vcIvMVnnkM0TSz8G1yzv1nOkruN3ozQkLMu6YS7lk/ENBN7DBtYVSmJeU2</div><div class="line">VAXE+zgRaP7JFOqK6DrOwhyE2LSgae83Wq/XgXxjfIo1Zmn2UmlE0sbdNKBasnf9</div><div class="line">gPUI45eltrjcv8FCSTOUcT7PWCa3</div><div class="line">-----END CERTIFICATE-----</div><div class="line">[Fri Dec 30 08:59:16 HKT 2016] Your cert is <span class="keyword">in</span>  /root/.acme.sh/mydomain.me_ecc/mydomain.me.cer</div><div class="line">[Fri Dec 30 08:59:16 HKT 2016] Your cert key is <span class="keyword">in</span>  /root/.acme.sh/mydomain.me_ecc/mydomain.me.key</div><div class="line">[Fri Dec 30 08:59:16 HKT 2016] The intermediate CA cert is <span class="keyword">in</span>  /root/.acme.sh/mydomain.me_ecc/ca.cer</div><div class="line">[Fri Dec 30 08:59:16 HKT 2016] And the full chain certs is there:  /root/.acme.sh/mydomain.me_ecc/fullchain.cer</div></pre></td></tr></table></figure>
-<p><code>-k</code> 表示密钥长度，后面的值可以是 <code>ec-256</code> 、<code>ec-284</code>、<code>2048</code>、<code>3072</code>、<code>4096</code>、<code>8192</code>，带有 <code>ec</code> 表示生成的是 ECC 证书，没有则是 RSA 证书。在安全性上 256 位的 ECC 证书等同于 3072 位的 RSA 证书。</p>
-<h4 id="证书更新"><a href="#证书更新" class="headerlink" title="证书更新"></a>证书更新</h4><p>由于 Let’s Encrypt 的证书有效期只有 3 个月，因此需要 90 天至少要更新一次证书，acme.sh 脚本会每 60 天自动更新证书。也可以手动更新。</p>
-<p>手动更新 ECC 证书，执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ~/.acme.sh/acme.sh --renew -d mydomain.com --force --ecc</div></pre></td></tr></table></figure>
-<p>如果是 RSA 证书则执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ~/.acme.sh/acme.sh --renew -d mydomain.com --force</div></pre></td></tr></table></figure>
-<h3 id="1-2-3-安装证书和密钥"><a href="#1-2-3-安装证书和密钥" class="headerlink" title="1.2.3. 安装证书和密钥"></a>1.2.3. 安装证书和密钥</h3><h4 id="ECC-证书"><a href="#ECC-证书" class="headerlink" title="ECC 证书"></a>ECC 证书</h4><p>将证书和密钥安装到 /etc/v2ray 中：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ~/.acme.sh/acme.sh --installcert -d mydomain.me --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc</div></pre></td></tr></table></figure>
-<h4 id="RSA-证书"><a href="#RSA-证书" class="headerlink" title="RSA 证书"></a>RSA 证书</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ~/.acme.sh/acme.sh --installcert -d mydomain.me --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key</div></pre></td></tr></table></figure>
-<p>注意：无论什么情况，密钥(即上面的v2ray.key)都不能泄漏，如果你不幸泄漏了密钥，可以使用 acme.sh 将原证书吊销，再生成新的证书，吊销方法请自行参考 acme.sh 的手册</p>
-<h2 id="1-3-配置-V2Ray"><a href="#1-3-配置-V2Ray" class="headerlink" title="1.3. 配置 V2Ray"></a>1.3. 配置 V2Ray</h2><h3 id="1-3-1-服务器"><a href="#1-3-1-服务器" class="headerlink" title="1.3.1. 服务器"></a>1.3.1. 服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"inbound"</span>: &#123;</div><div class="line">    <span class="string">"port"</span>: 443, // 建议使用 443 端口</div><div class="line">    <span class="string">"protocol"</span>: <span class="string">"vmess"</span>,    </div><div class="line">    <span class="string">"settings"</span>: &#123;</div><div class="line">      <span class="string">"clients"</span>: [</div><div class="line">        &#123;</div><div class="line">          <span class="string">"id"</span>: <span class="string">"23ad6b10-8d1a-40f7-8ad0-e3e35cd38297"</span>,  </div><div class="line">          <span class="string">"alterId"</span>: 64</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;,</div><div class="line">    <span class="string">"streamSettings"</span>: &#123;</div><div class="line">      <span class="string">"network"</span>: <span class="string">"tcp"</span>,</div><div class="line">      <span class="string">"security"</span>: <span class="string">"tls"</span>, // security 要设置为 tls 才会启用 TLS</div><div class="line">      <span class="string">"tlsSettings"</span>: &#123;</div><div class="line">        <span class="string">"certificates"</span>: [</div><div class="line">          &#123;</div><div class="line">            <span class="string">"certificateFile"</span>: <span class="string">"/etc/v2ray/v2ray.crt"</span>, //证书文件</div><div class="line">            <span class="string">"keyFile"</span>: <span class="string">"/etc/v2ray/v2ray.key"</span> //密钥文件</div><div class="line">          &#125;</div><div class="line">        ]</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"outbound"</span>: &#123;</div><div class="line">    <span class="string">"protocol"</span>: <span class="string">"freedom"</span>,</div><div class="line">    <span class="string">"settings"</span>: &#123;&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="1-3-2-客户端"><a href="#1-3-2-客户端" class="headerlink" title="1.3.2. 客户端"></a>1.3.2. 客户端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"inbound"</span>: &#123;</div><div class="line">    <span class="string">"port"</span>: 1080,</div><div class="line">    <span class="string">"protocol"</span>: <span class="string">"socks"</span>,</div><div class="line">    <span class="string">"settings"</span>: &#123;</div><div class="line">      <span class="string">"auth"</span>: <span class="string">"noauth"</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"outbound"</span>: &#123;</div><div class="line">    <span class="string">"protocol"</span>: <span class="string">"vmess"</span>,</div><div class="line">    <span class="string">"settings"</span>: &#123;</div><div class="line">      <span class="string">"vnext"</span>: [</div><div class="line">        &#123;</div><div class="line">          <span class="string">"address"</span>: <span class="string">"mydomain.me"</span>,</div><div class="line">          <span class="string">"port"</span>: 443,</div><div class="line">          <span class="string">"users"</span>: [</div><div class="line">            &#123;</div><div class="line">              <span class="string">"id"</span>: <span class="string">"23ad6b10-8d1a-40f7-8ad0-e3e35cd38297"</span>,</div><div class="line">              <span class="string">"alterId"</span>: 64</div><div class="line">            &#125;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;,</div><div class="line">    <span class="string">"streamSettings"</span>: &#123;</div><div class="line">      <span class="string">"network"</span>: <span class="string">"tcp"</span>,</div><div class="line">      <span class="string">"security"</span>: <span class="string">"tls"</span> // 客户端的 security 也要设置为 tls</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="1-4-验证"><a href="#1-4-验证" class="headerlink" title="1.4. 验证"></a>1.4. 验证</h2><p>一般来说，按照以上步骤操作完成，V2Ray 客户端能够正常联网说明 TLS 已经成功启用。但要是有个可靠的方法来验证是否正常开启 TLS 无疑更令人放心。 验证的方法有很多，我仅介绍一种小白化一点的，便是 <a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="external">Qualys SSL Labs’s SSL Server Test</a>。</p>
-<p>注意：使用 Qualys SSL Labs’s SSL Server Test 要求使用 443 端口，意味着你服务器配置的 inbound.port 应当是 443</p>
-<p>打开 <a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="external">Qualys SSL Labs’s SSL Server Test</a>，在 Hostname 中输入你的域名，点提交，过一会结果就出来了。<img src="https://toutyrater.github.io/resource/images/tls_test1.png" alt="img"></p>
-<p><img src="https://toutyrater.github.io/resource/images/tls_test2.png" alt="img">这是对于你的 TLS/SSL 的一个总体评分，我这里评分为 A，看来还不错。有这样的界面算是成功了。</p>
-<p><img src="https://toutyrater.github.io/resource/images/tls_test3.png" alt="img">这是关于证书的信息。从图中可以看出，我的这个证书有效期是从 2016 年 12 月 27 号到 2017 年的 3 月 27 号，密钥是 256 位的 ECC，证书签发机构是 Let’s Encrypt，重要的是最后一行，<code>Trusted</code> 为 <code>Yes</code>,表明我这个证书可信。</p>
-<h2 id="1-5-温馨提醒"><a href="#1-5-温馨提醒" class="headerlink" title="1.5. 温馨提醒"></a>1.5. 温馨提醒</h2><p>不要想当然地把在 SS 和 SSR 的观念带过来，更不要被别人轻飘飘的一句话误导，V2Ray 的 TLS 不是伪装！不是混淆！这是真正的 TLS！因此才需要域名需要证书。后文提到的 WS(WebSocks) 也不是伪装。</p>
+          Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本锐速(ServerSpeeder)可以说是LotServer的马甲，是针对民用的，而LotServer则是针对企业用户的，锐速现在基本上已经关了，而这个LotServer还在持续运营。
+Only for Linux.
+从根本原因上解决锐速断流问题，断流的根本原因是没有完整破解验证机制。
 
-          
+支持自动检测公网网卡，多个网卡也能区分。
+支持自动适配内核 (需锐速支持)。
+添加询问是否开启accppp功能 (实测并开启后没有效果)。
+默认设置为G口宽带 (听说设置大点可以提高速度)。
+支持一键完全卸载 (此脚本安装的无残留
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -415,7 +449,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/git pull和clone的区别及用法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/V2ray使用TLS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycg31">
@@ -424,7 +458,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -434,7 +468,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/19/git pull和clone的区别及用法/" itemprop="url">git pull 和 clone的区别及用法</a></h1>
+                <a class="post-title-link" href="/2017/08/19/V2ray使用TLS/" itemprop="url">V2ray使用TLS</a></h1>
         
 
         <div class="post-meta">
@@ -446,7 +480,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T05:14:34+08:00">
                 2017-08-20
               </time>
             
@@ -486,22 +520,21 @@
       
         
           
-            <p>#一、git pull<br>git pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。</p>
-<p>完整格式：$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</p>
-<p>完整格式举例：比如，取回origin主机的next分支，与本地的master分支合并，需要写成下面这样，</p>
-<h2 id="（1）-git-pull-origin-next-master：如果远程分支是与当前分支合并，则冒号后面的部分可以省略。"><a href="#（1）-git-pull-origin-next-master：如果远程分支是与当前分支合并，则冒号后面的部分可以省略。" class="headerlink" title="（1）$ git pull origin next:master：如果远程分支是与当前分支合并，则冒号后面的部分可以省略。"></a>（1）$ git pull origin next:master：如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</h2><h2 id="（2）-git-pull-origin-next：上面命令表示，取回origin-next分支，再与当前分支合并。实质上，这等同于先做git-fetch，再做git-merge。"><a href="#（2）-git-pull-origin-next：上面命令表示，取回origin-next分支，再与当前分支合并。实质上，这等同于先做git-fetch，再做git-merge。" class="headerlink" title="（2）$ git pull origin next：上面命令表示，取回origin/next分支，再与当前分支合并。实质上，这等同于先做git fetch，再做git merge。"></a>（2）$ git pull origin next：上面命令表示，取回origin/next分支，再与当前分支合并。实质上，这等同于先做git fetch，再做git merge。</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git fetch origin</div><div class="line">$ git merge origin/next</div></pre></td></tr></table></figure>
-<p>在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系(tracking)。比如，在git clone的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的master分支自动”追踪”origin/master分支。</p>
-<p>Git也允许手动建立追踪关系，git branch –set-upstream master origin/next<br>上面命令指定master分支追踪origin/next分支。如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin</div></pre></td></tr></table></figure>
-<p>上面命令表示，本地的当前分支自动与对应的origin主机”追踪分支”(remote-tracking branch)进行合并。<br>如果当前分支只有一个追踪分支，连远程主机名都可以省略。</p>
-<p>#二、get clone<br>远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。</p>
-<p>##（1）$ git clone &lt;版本库的网址&gt;<br>比如，克隆jQuery的版本库。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/jquery/jquery.git</div></pre></td></tr></table></figure></p>
-<p>该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为git clone命令的第二个参数。</p>
-<p>##（2）$ git clone &lt;版本库的网址&gt; &lt;本地目录名&gt;<br>git clone支持多种协议，除了HTTP(s)以外，还支持SSH、Git、本地文件协议等，下面是一些例子。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> http[s]://example.com/path/to/repo.git/</div><div class="line">$ git <span class="built_in">clone</span> ssh://example.com/path/to/repo.git/</div><div class="line">$ git <span class="built_in">clone</span> git://example.com/path/to/repo.git/</div><div class="line">$ git <span class="built_in">clone</span> /opt/git/project.git</div><div class="line">$ git <span class="built_in">clone</span> file:///opt/git/project.git</div><div class="line">$ git <span class="built_in">clone</span> ftp[s]://example.com/path/to/repo.git/</div><div class="line">$ git <span class="built_in">clone</span> rsync://example.com/path/to/repo.git/</div></pre></td></tr></table></figure></p>
-<p>##（3）SSH协议还有另一种写法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> [user@]example.com:path/to/repo.git/</div></pre></td></tr></table></figure></p>
-<p>通常来说，Git协议下载速度最快，SSH协议用于需要用户认证的场合。</p>
-
           
+1. TLS从 v1.19 起引入了 TLS，TLS 中文译名是传输层安全，如果你没听说过，请 Google 了解一下。以下给出些我认为介绍较好的文章链接：
+SSL/TLS协议运行机制的概述
+传输层安全协议
+Shadowsocks 的作者 clowwindy 却认为翻墙不该用 SSL。那么到底该不该用？对此我不作评论，各位自行思考。这里我只教大家如何开启 TLS。
+1.1. 注册一个域名如果已经注册有域名了可以跳过。 域名有免费的有付费的，总体来说付费的会优于免费的，具体差别请 Google。如果你不舍得为一个域名每年花点钱，用个免费域名也可以。为了方便，这里我将以免费域名为例。
+关于如何注
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/V2ray使用TLS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -557,7 +590,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -579,7 +612,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T05:14:34+08:00">
                 2017-08-20
               </time>
             
@@ -619,10 +652,15 @@
       
         
           
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># v2ray        Startup script for v2ray</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># chkconfig: - 24 76</span></div><div class="line"><span class="comment"># processname: v2ray</span></div><div class="line"><span class="comment"># pidfile: /var/run/v2ray.pid</span></div><div class="line"><span class="comment"># description: V2Ray proxy services</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="comment">### BEGIN INIT INFO</span></div><div class="line"><span class="comment"># Provides:          v2ray</span></div><div class="line"><span class="comment"># Required-Start:    $network $local_fs $remote_fs</span></div><div class="line"><span class="comment"># Required-Stop:     $remote_fs</span></div><div class="line"><span class="comment"># Default-Start:     2 3 4 5</span></div><div class="line"><span class="comment"># Default-Stop:      0 1 6</span></div><div class="line"><span class="comment"># Short-Description: V2Ray proxy services</span></div><div class="line"><span class="comment"># Description:       V2Ray proxy services</span></div><div class="line"><span class="comment">### END INIT INFO</span></div><div class="line"></div><div class="line">DESC=v2ray</div><div class="line">NAME=v2ray</div><div class="line">DAEMON=/usr/bin/v2ray/v2ray</div><div class="line">PIDFILE=/var/run/<span class="variable">$NAME</span>.pid</div><div class="line">LOCKFILE=/var/lock/subsys/<span class="variable">$NAME</span></div><div class="line">SCRIPTNAME=/etc/init.d/<span class="variable">$NAME</span></div><div class="line">RETVAL=0</div><div class="line"></div><div class="line">DAEMON_OPTS=<span class="string">"-config /etc/v2ray/config.json"</span></div><div class="line"></div><div class="line"><span class="comment"># Exit if the package is not installed</span></div><div class="line">[ -x <span class="variable">$DAEMON</span> ] || <span class="built_in">exit</span> 0</div><div class="line"></div><div class="line"><span class="comment"># Read configuration variable file if it is present</span></div><div class="line">[ -r /etc/default/<span class="variable">$NAME</span> ] &amp;&amp; . /etc/default/<span class="variable">$NAME</span></div><div class="line"></div><div class="line"><span class="comment"># Source function library.</span></div><div class="line">. /etc/rc.d/init.d/<span class="built_in">functions</span></div><div class="line"></div><div class="line"><span class="function"><span class="title">start</span></span>() &#123;</div><div class="line">  <span class="built_in">local</span> pids=$(pgrep -f <span class="variable">$DAEMON</span>)</div><div class="line">  <span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$pids</span>"</span> ]; <span class="keyword">then</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$NAME</span> (pid <span class="variable">$pids</span>) is already running"</span></div><div class="line">    RETVAL=0</div><div class="line">    <span class="built_in">return</span> 0</div><div class="line">  <span class="keyword">fi</span></div><div class="line"></div><div class="line">  <span class="built_in">echo</span> -n $<span class="string">"Starting <span class="variable">$NAME</span>: "</span></div><div class="line"></div><div class="line">  mkdir -p /var/<span class="built_in">log</span>/v2ray</div><div class="line">  <span class="variable">$DAEMON</span> <span class="variable">$DAEMON_OPTS</span> 1&gt;/dev/null 2&gt;&amp;1 &amp;</div><div class="line">  <span class="built_in">echo</span> $! &gt; <span class="variable">$PIDFILE</span></div><div class="line"></div><div class="line">  sleep 2</div><div class="line">  pgrep -f <span class="variable">$DAEMON</span> &gt;/dev/null 2&gt;&amp;1</div><div class="line">  RETVAL=$?</div><div class="line">  <span class="keyword">if</span> [ <span class="variable">$RETVAL</span> -eq 0 ]; <span class="keyword">then</span></div><div class="line">    success; <span class="built_in">echo</span></div><div class="line">    touch <span class="variable">$LOCKFILE</span></div><div class="line">  <span class="keyword">else</span></div><div class="line">    failure; <span class="built_in">echo</span></div><div class="line">  <span class="keyword">fi</span></div><div class="line">  <span class="built_in">return</span> <span class="variable">$RETVAL</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">stop</span></span>() &#123;</div><div class="line">  <span class="built_in">local</span> pids=$(pgrep -f <span class="variable">$DAEMON</span>)</div><div class="line">  <span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$pids</span>"</span> ]; <span class="keyword">then</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$NAME</span> is not running"</span></div><div class="line">    RETVAL=0</div><div class="line">    <span class="built_in">return</span> 0</div><div class="line">  <span class="keyword">fi</span></div><div class="line"></div><div class="line">  <span class="built_in">echo</span> -n $<span class="string">"Stopping <span class="variable">$NAME</span>: "</span></div><div class="line">  killproc -p <span class="variable">$&#123;PIDFILE&#125;</span> <span class="variable">$&#123;NAME&#125;</span></div><div class="line">  RETVAL=$?</div><div class="line">  <span class="built_in">echo</span></div><div class="line">  [ <span class="variable">$RETVAL</span> = 0 ] &amp;&amp; rm -f <span class="variable">$&#123;LOCKFILE&#125;</span> <span class="variable">$&#123;PIDFILE&#125;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">reload</span></span>() &#123;</div><div class="line">  <span class="built_in">echo</span> -n $<span class="string">"Reloading <span class="variable">$NAME</span>: "</span></div><div class="line">  killproc -p <span class="variable">$&#123;PIDFILE&#125;</span> <span class="variable">$&#123;NAME&#125;</span> -HUP</div><div class="line">  RETVAL=$?</div><div class="line">  <span class="built_in">echo</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">rh_status</span></span>() &#123;</div><div class="line">  status -p <span class="variable">$&#123;PIDFILE&#125;</span> <span class="variable">$&#123;DAEMON&#125;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># See how we were called.</span></div><div class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></div><div class="line">  start)</div><div class="line">    rh_status &gt;/dev/null 2&gt;&amp;1 &amp;&amp; <span class="built_in">exit</span> 0</div><div class="line">    start</div><div class="line">    ;;</div><div class="line">  stop)</div><div class="line">    stop</div><div class="line">    ;;</div><div class="line">  status)</div><div class="line">    rh_status</div><div class="line">    RETVAL=$?</div><div class="line">    ;;</div><div class="line">  restart)</div><div class="line">    stop</div><div class="line">    start</div><div class="line">    ;;</div><div class="line">  reload)</div><div class="line">    reload</div><div class="line">  ;;</div><div class="line">  *)</div><div class="line">    <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$SCRIPTNAME</span> &#123;start|stop|status|reload|restart&#125;"</span> &gt;&amp;2</div><div class="line">    RETVAL=2</div><div class="line">  ;;</div><div class="line"><span class="keyword">esac</span></div><div class="line"><span class="built_in">exit</span> <span class="variable">$RETVAL</span></div></pre></td></tr></table></figure>
-<p>Save as <code>/etc/init.d/v2ray</code> and then excute:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">$ sudo chmod +x /etc/init.d/v2ray</div><div class="line">$ sudo chkconfig v2ray on</div><div class="line">$ sudo service v2ray start</div><div class="line"> Centos6下的部署</div><div class="line"></div><div class="line">先说明下，V2Ray提供的一键安装脚本自带守护进程，意思是如果V2Ray如果意外中止，会自动重新启动，这样使用非常方便，但是Centos6下我这种Ctrl CV党实在是不会自己写脚本，采用的是简易运行方式，所以推荐尽量能采用2.1的步骤来安装。</div><div class="line"></div><div class="line">首先我们打开作者的Github项目，找到最新版的V2ray的下载地址</div><div class="line"></div><div class="line">https://github.com/v2ray/v2ray-core/releases</div><div class="line"></div><div class="line">目前最新版是v2.19，我们找到对应的v2ray-linux-64.zip文件，复制链接地址：</div><div class="line"></div><div class="line">https://github.com/v2ray/v2ray-core/releases/download/v2.19/v2ray-linux-64.zip</div><div class="line"></div><div class="line">然后我们Root用户Putty登录服务器，root目录下下载文件，代码如下：</div><div class="line"></div><div class="line">wget https://github.com/v2ray/v2ray-core/releases/download/v2.19/v2ray-linux-64.zip</div><div class="line"></div><div class="line">下载完毕后，我们解压zip文件</div><div class="line"></div><div class="line">unzip v2ray-linux-64.zip</div><div class="line"></div><div class="line">目录下会多一个目录名，v2ray-v2.19-linux-64（版本不同目录名有版本号的差别），为了后面操作方便，我们把目录名更名</div><div class="line"></div><div class="line">mv v2ray-v2.19-linux-64 v2ray</div><div class="line"></div><div class="line">进入目录，并对v2ray文件授权</div><div class="line"></div><div class="line"><span class="built_in">cd</span> /root/v2ray</div><div class="line"></div><div class="line">chmod +x v2ray</div><div class="line"></div><div class="line">这时候v2ray就能使用了，但是运行v2ray，一旦关闭putty，v2ray就会自动关闭，所以我们需要后台运行，这里采用nohup的方式。</div><div class="line"></div><div class="line"><span class="built_in">cd</span> /root/v2ray</div><div class="line"></div><div class="line">nohup ./v2ray &amp;</div><div class="line"></div><div class="line">停止V2ray服务也很简单</div><div class="line"></div><div class="line">killall v2ray</div><div class="line"></div><div class="line">编辑rc.local文件，添加开机启动V2ray</div><div class="line"></div><div class="line">vi /etc/rc.d/rc.local</div><div class="line"></div><div class="line">打开后添加两行</div><div class="line"></div><div class="line"><span class="built_in">cd</span> /root/v2ray</div><div class="line"></div><div class="line">nohup ./v2ray &amp;</div><div class="line"></div><div class="line">到这里安装就成功了。下面我们进入下一步，编辑配置文件。</div></pre></td></tr></table></figure>
-          
+          123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117#!/bin/sh## v2ray        Startup script for v2ray## chkco
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/v2ray/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -669,7 +707,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/使用AppVeyor自动部署Hexo到Github/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/mi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycg31">
@@ -678,7 +716,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -688,7 +726,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/19/使用AppVeyor自动部署Hexo到Github/" itemprop="url">使用AppVeyor自动部署Hexo到Github</a></h1>
+                <a class="post-title-link" href="/2017/08/19/mi/" itemprop="url">（转）Hexo添加文章时自动打开编辑器</a></h1>
         
 
         <div class="post-meta">
@@ -700,7 +738,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T03:20:09+08:00">
                 2017-08-20
               </time>
             
@@ -740,52 +778,24 @@
       
         
           
-            <p>#一、转载别人的教程<br>想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用<code>hexo deploy</code>来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行备份，但是每次更新完博客，需要备份好源文件，然后执行<code>hexo deploy</code>进行发布，是不是很麻烦？换了电脑之后又要重新搭建本地环境，是不是很蛋疼？</p>
-<p>那么接下来我们就来说说如何优雅愉快地对我们的Hexo进行版本管理和发布。</p>
-<p>​      既然我们已经用了GitHub来托管我们生成出来的静态网站，那么为什么不也把Hexo博客的源文件也host在GitHub上呢。那么问题来了，如果我们把Hexo博客的源文件托管在GitHub上，我们的发布流程就会变为：</p>
-<ol>
-<li>执行<code>git push</code>把更新的源文件push到托管源文件的GitHub Repo (我们称之为Source Repo)</li>
-<li>执行<code>hexo deploy</code>来更新托管静态网站的GitHub Pages (我们称之为Content Repo)</li>
-</ol>
-<p>​     这样看来，每次更新博客要经历两个步骤，并不是那么straightforward。那么有没有办法做到既能使用GitHub进行版本控制，又能做到一键发布呢？</p>
-<p>​      答案是肯定的。这里用到了<a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank" rel="external">持续集成</a>也就是我们一直所说的CI来完成一键发布：当有新的change push到Source Repo时，自动执行CI脚本，生成最新的静态网站发布到Content Repo，一气呵成。那么我使用什么CI工具来做呢？我们可以使用像Travis CI这样的Hosted CI Service，也可以使用Jenkins或者TeamCity来搭建CI server。如果自己来搭建CI Server，费时费力，又要花钱来买Server来host CI service，肯定不是一个很好的选择。那么我们选哪个Hosted CI Service呢？其实今年在公司的一个项目中我们就选择了AppVeyor。当初在做investigation的时候，第一个想到的就是用Travis CI，然而我司大多数的开发环境都是Windows，而且当时的项目有Python, PowerShell, Java等，那时PowerShell还只支持Windows，所以需要选择一个支持Windows的CI Service。于是，Scott Hanselman安利的<a href="http://www.hanselman.com/blog/AppVeyorAGoodContinuousIntegrationSystemIsAJoyToBehold.aspx" target="_blank" rel="external">AppVeyor</a>就成为了一个备选。访问<a href="https://www.appveyor.com/" target="_blank" rel="external">AppVeyor官网</a>，映入眼帘的大标题就是<code>#1 Continuous Delivery service for Windows</code>。刚开始的时候内心一阵嘲笑，Top 10的CI Service就你支持Windows，你不是第一那谁是第一？结果在之后的项目使用中，发现AppVeyor比Travis CI好用太多。这里就不具体展开了，继续进入正题。</p>
-<p>​     使用AppVeyor来建立CI非常方便，主要是以下步骤：</p>
-<ol>
-<li><h2 id="注册并登陆AppVeyor"><a href="#注册并登陆AppVeyor" class="headerlink" title="注册并登陆AppVeyor"></a>注册并登陆AppVeyor</h2><p>访问<a href="https://ci.appveyor.com/login" target="_blank" rel="external">AppVeyor登陆页面</a>，使用你的GitHub账号登陆即可。                                        </p>
-<p>​</p>
-<p><a href="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-login.png" target="_blank" rel="external"><img src="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-login.png" alt="login"></a></p>
-<p>## </p>
-</li>
-<li><h2 id="添加Project"><a href="#添加Project" class="headerlink" title="添加Project"></a>添加Project</h2><p>在<a href="https://ci.appveyor.com/projects/new" target="_blank" rel="external">AppVeyor Projects页面</a>，添加相应的GitHub Source Repo。                                     </p>
-<p>​</p>
-<p><a href="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-add-project.png" target="_blank" rel="external"><img src="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-add-project.png" alt="add-project"></a></p>
-<p>## </p>
-</li>
-<li><h2 id="添加appveyor-yml到Source-Repo"><a href="#添加appveyor-yml到Source-Repo" class="headerlink" title="添加appveyor.yml到Source Repo"></a>添加appveyor.yml到Source Repo</h2><p>接下来，你需要把appveyor.yml添加到Source Repo的根目录下。具体的appveyor.yml如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">clone_depth: 5</div><div class="line">environment:</div><div class="line">access_token:</div><div class="line">    secure: [Your GitHub Access Token]</div><div class="line"></div><div class="line">install:</div><div class="line">- node --version</div><div class="line">- npm --version</div><div class="line">- npm install</div><div class="line">- npm install hexo-cli -g</div><div class="line">build_script:</div><div class="line">- hexo generate</div></pre></td></tr></table></figure>
-<p>artifacts:</p>
-<ul>
-<li>path: public<br>   on_success:</li>
-<li>git config –global credential.helper store</li>
-<li>ps: Add-Content “$env:USERPROFILE.git-credentials” “<a href="https://$($env:access_token):x-oauth-basic@github.com`n" target="_blank" rel="external">https://$($env:access_token):x-oauth-basic@github.com`n</a>“</li>
-<li>git config –global user.email “%GIT_USER_EMAIL%”</li>
-<li>git config –global user.name “%GIT_USER_NAME%”</li>
-<li>git clone –depth 5 -q –branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site</li>
-<li>cd %TEMP%\static-site</li>
-<li>del * /f /q</li>
-<li>for /d %%p IN (*) do rmdir “%%p” /s /q</li>
-<li>SETLOCAL EnableDelayedExpansion &amp; robocopy “%APPVEYOR_BUILD_FOLDER%\public” “%TEMP%\static-site” /e &amp; IF !ERRORLEVEL! EQU 1 (exit 0) ELSE (IF !ERRORLEVEL! EQU 3 (exit 0) ELSE (exit 1))</li>
-<li>git add -A</li>
-<li>git commit -m “Update Static Site” </li>
-<li>git push origin %TARGET_BRANCH%</li>
-<li>appveyor AddMessage “Static Site Updated”<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">   你唯一需要做的就是替换[Your GitHub Access Token]，关于生成Access Token，可以参考这篇[文章](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)。在GitHub生成好Access Token之后，你需要到[AppVeyor加密页面](https://ci.appveyor.com/tools/encrypt)把Access Token加密之后再替换[Your GitHub Access Token]  </div><div class="line"></div><div class="line">   ​</div><div class="line"></div><div class="line">   [![encrypt](https://formulahendry.github.io/assets/img/hexo-ci/appveyor-encrypt.png)](https://formulahendry.github.io/assets/img/hexo-ci/appveyor-encrypt.png)</div><div class="line"></div><div class="line">   ## </div><div class="line"></div><div class="line">4. ## 设置Appveyor</div><div class="line"></div><div class="line">   添加好appveyor.yml之后，再到Appveyor portal设置以下四个变量。STATIC_SITE_REPO就是Content Repo的地址，TARGET_BRANCH就是你Content Repo的branch，一般默认就是master，GIT_USER_EMAIL和GIT_USER_NAME就是你GitHub账号的信息。                                       </div><div class="line"></div><div class="line">   ​</div><div class="line"></div><div class="line">   [![setting](https://formulahendry.github.io/assets/img/hexo-ci/appveyor-setting.png)](https://formulahendry.github.io/assets/img/hexo-ci/appveyor-setting.png)</div><div class="line"></div><div class="line">好了，一切大功告成！试一下`git push`你的change到Source Repo，几分钟内，你的博客就自动更新了！</div><div class="line"></div><div class="line">背后的过程如下:</div><div class="line"></div><div class="line">1. Git push to Source Repo</div><div class="line">2. –&gt; AppVeyor CI</div><div class="line">3. –&gt; Update GitHub Pages Content Repo</div><div class="line">4. –&gt; Generate your Hexo blog site</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<p>#折腾过程中遇到的问题<br>部署成功后，所有创建的html文件全部是空的，几经周折才发现，原来是缺少主题文件，所有生成的html文件全是空的，t提示错误WARN No layout，再到GitHub上一看，主题文件夹变成了灰色。具体如何解决灰色文件夹可以参考我转载的另一篇文章。</p>
-
           
+
+在Hexo中新建一篇博文非常简单，只需要在命令行中键入以下命令然后回车即可：
+1hexo new "The title of your blog"
+此后Hexo便会在Hexo的根目录的source文件夹下的_posts目录下自动帮你创建相应的md文件。然后我们打开该目录，找到刚刚Hexo自动生成的文件打开编辑即可。
+但是当我们的博文比较多，这样我们就需要在成堆的Markdown文件中找到刚才自动生成的文件，这样做显然是一件比较痛苦的事情。
+
+首先在Hexo目录下的scripts目录中创建一个JavaScript脚本文件。
+如果没有这个scripts目录，则新建一个。
+scripts目录新建
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/mi/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -832,7 +842,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/使用Travis-CI自动部署Hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/使用Travis自动部署hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycg31">
@@ -841,7 +851,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -851,7 +861,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/19/使用Travis-CI自动部署Hexo/" itemprop="url">使用Travis CI自动部署Hexo</a></h1>
+                <a class="post-title-link" href="/2017/08/19/使用Travis自动部署hexo/" itemprop="url">使用Travis自动部署hexo</a></h1>
         
 
         <div class="post-meta">
@@ -863,7 +873,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:21:57+08:00">
                 2017-08-20
               </time>
             
@@ -873,6 +883,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/转载/" itemprop="url" rel="index">
+                    <span itemprop="name">转载</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -903,86 +935,21 @@
       
         
           
-            <p>前两天了解到了一个有趣的概念叫持续集成：</p>
-<blockquote>
-<p>持续集成是一种软件开发实践。在持续集成中，团队成员频繁集成他们的工作成果，一般每人每天至少集成一次，也可以多次。每次集成会经过自动构建（包括自动测试）的检验，以尽快发现集成错误。许多团队发现这种方法可以显著减少集成引起的问题，并可以加快团队合作软件开发的速度。这篇文章简要介绍了持续集成的技巧和它最新的应用。 然后想到我的博客也恰好满足这样的需求，因为我的博客一旦有了修改，就必须要重新build并且部署，那么能不能用持续集成的思想来改造我部署博客的流程呢？</p>
-</blockquote>
-<p>在这样的指导思想下，我完成了上一篇文章：<a href="https://xuanwo.org/2015/02/05/VPS-Hexo-Autodeploy/" target="_blank" rel="external">VPS搭配Github Webhook实现Hexo自动发布</a>，而今天我要介绍一下，在没有VPS的情况下，如何更方便的配置自己的持续集成的博客。</p>
-<h1 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h1><ul>
-<li>方便：只需要一次配置，便省去了每一次编辑文档后，都需要进行<code>hexo d -g</code>的麻烦，更不必说文章增多之后渲染时间还会增长。</li>
-<li>稳定：这个是最近才发现的，Github被搞了之后，很多人反映不能更新博客了，使用<code>Travis CI</code>，你只要想办法提交一个小md文档，就能进行构建。如果自己手动构建，只要一个文件上传失败，前面的工作都白费了。</li>
-<li>快捷：即使是出差在外，只要能编辑Markdown，就可以撰写博客，使得Hexo拥有类似于WP一致的体验~</li>
-<li>协作：博客的构建完全交由<code>Travis CI</code>进行，所以完全可以通过<code>Hexo</code>+<code>git</code>构建一个多人协作的博客平台。实际上，Hexo的<a href="https://hexo.io/" target="_blank" rel="external">官网</a>正是这样构建的。</li>
-</ul>
-<h1 id="Travis-CI介绍"><a href="#Travis-CI介绍" class="headerlink" title="Travis CI介绍"></a>Travis CI介绍</h1><blockquote>
-<p>Travis CI是在软件开发领域中的一个在线的，分布式的持续集成服务，用来构建及测试在GitHub托管的代码。这个软件的代码同时也是开源的，可以在GitHub上下载到，尽管开发者当前并不推荐在闭源项目中单独使用它。 它提供了多种编程语言的支持，包括Ruby，JavaScript，Java，Scala，PHP，Haskell和Erlang在内的多种语言。许多知名的开源项目使用它来在每次提交的时候进行构建测试，比如Ruby on Rails，Ruby和Node.js。 2012年，Travis CI 决定进行募资以支持后续的开发，在这次募资活动中，许多重量级的科技公司给予了资助。</p>
-</blockquote>
-<p>需要注意的是几个特性：</p>
-<ul>
-<li>只支持Github</li>
-<li>支持JavaScript</li>
-<li>开源，免费</li>
-</ul>
-<p>然后介绍一下它的原理： Travis CI会在你每一次提交之后生成一个虚拟机来执行你事先安排好的build任务，你可以调整这个虚拟机的软件环境，甚至能执行<code>sudo</code>来进行<code>apt-get install</code>。</p>
-<h1 id="Travis-CI配置"><a href="#Travis-CI配置" class="headerlink" title="Travis CI配置"></a>Travis CI配置</h1><p>我们知道，Hexo的命令非常简单，一个<code>hexo d -g</code>就可以搞定。困难之处在于，Travis CI并没有对你的库进行push操作的权限。如果直接将私钥放在自己的开源库之中，这无异于将自己的代码库提交权限开放给了所有的Github使用者。所以，为了保护自己，我们需要采取一些配置操作。</p>
-<p><em>感谢Hexo作者tommy351提供的操作流程，原文可见于用 Travis CI 自動部署網站到 GitHub</em></p>
-<h2 id="Travis-CI使用SSH-连接GitHub"><a href="#Travis-CI使用SSH-连接GitHub" class="headerlink" title="Travis CI使用SSH 连接GitHub"></a>Travis CI使用SSH 连接GitHub</h2><h3 id="生成SSH-Key"><a href="#生成SSH-Key" class="headerlink" title="生成SSH Key"></a>生成SSH Key</h3><p>参见<a href="http://xuanwo.org/2015/02/07/generate-a-ssh-key/" target="_blank" rel="external">使用Github SSH Key以免去Hexo部署时输入密码</a> 需要注意的是，这个SSH key不应成为你账号的全局SSH key<em>（因为这样Travis CI就获得了你所有代码库的提交权限，这是不正确的）</em>，而应该添加至<a href="https://github.com/username/ropename/settings/keys" target="_blank" rel="external">https://github.com/username/ropename/settings/keys</a> ，这样，你就控制了Travis CI的权限。</p>
-<p>###加密私钥</p>
-<p>下面的操作需要事先配置好gem环境，如果没有可以尝试使用<a href="http://xuanwo.org/2014/08/07/Cloud9/" target="_blank" rel="external">强大且配置项丰富的在线IDE应用——Cloud9</a>。</p>
-<h3 id="安装Travis-CI的命令行工具"><a href="#安装Travis-CI的命令行工具" class="headerlink" title="安装Travis CI的命令行工具"></a>安装Travis CI的命令行工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install travis <span class="comment"># 安装travis</span></div></pre></td></tr></table></figure>
-<h3 id="登陆Travis-CI"><a href="#登陆Travis-CI" class="headerlink" title="登陆Travis CI"></a>登陆Travis CI</h3><p>需要输入Github账号和密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">travis login --auto</div></pre></td></tr></table></figure>
-<h3 id="加密私钥并上传至Travis"><a href="#加密私钥并上传至Travis" class="headerlink" title="加密私钥并上传至Travis"></a>加密私钥并上传至Travis</h3><p>正确生成后你会得到两个文件，一个叫<code>ssh_key</code>，一个叫<code>ssh_key.pub</code>。刚才我们将<code>ssh_key.pub</code>添加到了github，下面我们要加密<code>ssh_key</code>这个私钥并且上传到Travis。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">travis encrypt-file ssh_key --add</div></pre></td></tr></table></figure>
-<p>然后Travis的客户端会自动检测当前目录中的git信息，并且添加到<code>.travis.yml</code>中去。在进行此步操作前，目录下要先存在<code>.travis.yml</code>文件，否则会报错。</p>
-<h3 id="指定SSH设置"><a href="#指定SSH设置" class="headerlink" title="指定SSH设置"></a>指定SSH设置</h3><p>在当前目录下新建文件<code>ssh_config</code>，内容为</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Host github.com</div><div class="line">  User git</div><div class="line">  StrictHostKeyChecking no</div><div class="line">  IdentityFile ~/.ssh/id_rsa</div><div class="line">  IdentitiesOnly yes</div></pre></td></tr></table></figure>
-<p>然后指定openssl解密后的生成位置，修改Travis自动插入的解密指令(不要照抄，注意修改密钥)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- openssl aes-256-cbc -K <span class="variable">$encrypted_xxxxxxxxxx_key</span> -iv <span class="variable">$encrypted_xxxxxxxxxx_iv</span></div><div class="line">  -<span class="keyword">in</span> travis.enc -out ~/.ssh/id_rsa -d</div></pre></td></tr></table></figure>
-<h3 id="修改目录权限"><a href="#修改目录权限" class="headerlink" title="修改目录权限"></a>修改目录权限</h3><p>紧跟那条解密指令，换行输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- chmod 600 ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
-<p>注意yml格式，短杠后面的空格不能省略。</p>
-<h3 id="将密钥加入系统"><a href="#将密钥加入系统" class="headerlink" title="将密钥加入系统"></a>将密钥加入系统</h3><p>紧跟上一步操作，换行输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- <span class="built_in">eval</span> $(ssh-agent)</div><div class="line">- ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
-<h3 id="修改git信息"><a href="#修改git信息" class="headerlink" title="修改git信息"></a>修改git信息</h3><p>将之前创建的ssh_config复制到Travis的虚拟机中去，输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- cp ssh_config ~/.ssh/config</div></pre></td></tr></table></figure>
-<p>然后指定git使用者信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- git config --global user.name <span class="string">"username"</span></div><div class="line">- git config --global user.email username@example.com</div></pre></td></tr></table></figure>
-<p>###Build配置</p>
-<p>之前的所有操作都只是为了让Travis CI拥有push权限，下面我们开始进入到真正的Build配置当中。 之前我们用到了一个名为<code>.travis.yml</code>的文件，跟build有关的所有设置都在这个文件里面，下面的操作都在这个文件当中进行。</p>
-<h3 id="指定环境"><a href="#指定环境" class="headerlink" title="指定环境"></a>指定环境</h3><p>在文件中添加如下代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">language: node_js</div><div class="line"></div><div class="line">node_js:</div><div class="line">- <span class="string">'0.10'</span>   //指定使用node.js最新的稳定版0.10</div></pre></td></tr></table></figure>
-<h3 id="指定分支"><a href="#指定分支" class="headerlink" title="指定分支"></a>指定分支</h3><p>在文件中添加如下代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">branches:</div><div class="line">  only:</div><div class="line">  - blog    //这个分支应当使用自己的源文件分支</div></pre></td></tr></table></figure>
-<p>差点忘了讲- -，本方案只适用于用github来托管自己自己的hexo目录的用户。这里的分支应该使用包含有.md文档的那个分支。</p>
-<h3 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h3><p>首先在虚拟机中安装Hexo：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">install:</div><div class="line">- npm install hexo-cli -g</div><div class="line">- npm install hexo --save</div><div class="line">- npm install</div></pre></td></tr></table></figure>
-<p>然后执行Hexo的渲染操作</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">script:</div><div class="line">- hexo clean   //分开写，方便调试可能出现的错误</div><div class="line">- hexo d</div><div class="line">- hexo g</div></pre></td></tr></table></figure>
-<p>到这里，你的Travis CI的持续集成已经配置完毕了，最后的<code>.travis.yml</code>文件内容可以参考如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">branches:</div><div class="line">  only:</div><div class="line">  - blog <span class="comment"># 这里是你监视的分支，只有blog分支更改才触发自动部署</span></div><div class="line"></div><div class="line">language: node_js</div><div class="line"></div><div class="line">sudo: <span class="literal">false</span></div><div class="line"></div><div class="line">node_js:</div><div class="line">- <span class="string">'0.12'</span> </div><div class="line"></div><div class="line">before_install:</div><div class="line">- openssl aes-256-cbc -K <span class="variable">$encrypted_xxxxxxxxx_key</span> -iv <span class="variable">$encrypted_xxxxxxx_iv</span></div><div class="line">  -<span class="keyword">in</span> doc/travis.enc -out ~/.ssh/id_rsa -d</div><div class="line">- chmod 600 ~/.ssh/id_rsa</div><div class="line">- <span class="built_in">eval</span> $(ssh-agent)</div><div class="line">- ssh-add ~/.ssh/id_rsa</div><div class="line">- cp doc/ssh_config ~/.ssh/config</div><div class="line">- git config --global user.name <span class="string">"yourname"</span></div><div class="line">- git config --global user.email youremail</div><div class="line">- git <span class="built_in">clone</span> -b master git@github.com:yourname/yourrepo.git .deploy_git</div><div class="line"></div><div class="line">install:</div><div class="line">- npm install hexo-cli -g</div><div class="line">- npm install</div><div class="line">- npm install hexo-generator-feed --save</div><div class="line">- npm install hexo-generator-sitemap --save</div><div class="line">- npm install hexo-deployer-git --save</div><div class="line"></div><div class="line">script:</div><div class="line">- hexo clean</div><div class="line">- hexo g</div><div class="line">- hexo d</div></pre></td></tr></table></figure>
-<h2 id="Travis-CI使用Token-连接GitHub"><a href="#Travis-CI使用Token-连接GitHub" class="headerlink" title="Travis CI使用Token 连接GitHub"></a>Travis CI使用Token 连接GitHub</h2><ul>
-<li><h3 id="安装travis"><a href="#安装travis" class="headerlink" title="安装travis"></a><strong>安装travis</strong></h3><p>Travis安装需要Ruby环境，所有需要安装Ruby,并且需要安装rubygems插件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装travis</span></div><div class="line">gem isntall travis</div></pre></td></tr></table></figure>
-</li>
-<li><h3 id="新建配置文件"><a href="#新建配置文件" class="headerlink" title="新建配置文件"></a>新建配置文件</h3><p>首先打开博客项目文件夹，在项目根目录新建<code>.travis.yml</code>配置文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> 博客项目文件夹根目录</div><div class="line">$ touch .travis.yml</div></pre></td></tr></table></figure>
-</li>
-<li><h3 id="登录travis"><a href="#登录travis" class="headerlink" title="登录travis"></a><strong>登录travis</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">travis login --auto</div></pre></td></tr></table></figure>
-<p>然后会提示输入github的用户名和密码。</p>
-</li>
-<li><h3 id="新建变量"><a href="#新建变量" class="headerlink" title="新建变量"></a><strong>新建变量</strong></h3><p>在项目根目录下执行:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 这里的 REPO_TOKEN 是变量名,在后面的配置文件中会用到</span></div><div class="line"><span class="comment"># TOKEN 是上面github生成的Token</span></div><div class="line">travis encrypt <span class="string">'REPO_TOKEN=&lt;TOKEN&gt;'</span> --add</div></pre></td></tr></table></figure>
-<p>此操作会在<code>.travis.yml</code>文件中添加下面的信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">env:</div><div class="line">global:</div><div class="line">  secure: fxBE17yzFhC2+FjwVLYbgIhggyfliv3dFCDozTJD7U3n</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><p>​      打开Travis配置文件<strong>.travis.yml</strong>，添加如下信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">language: node_js</div><div class="line">node_js:</div><div class="line">- <span class="string">"4"</span>  <span class="comment"># nodejs的版本</span></div><div class="line">branches:</div><div class="line">  only:</div><div class="line">  - dev  <span class="comment"># 设置自动化部署的源码分支</span></div><div class="line">env:</div><div class="line">  global:</div><div class="line">    secure: [加密后的Token]</div><div class="line">before_install:</div><div class="line">- <span class="built_in">export</span> TZ=<span class="string">'Asia/Shanghai'</span>  <span class="comment"># 设置时区</span></div><div class="line">- npm install -g hexo</div><div class="line">- npm install -g hexo-cli</div><div class="line">before_script:</div><div class="line"><span class="comment"># 设置github账户信息</span></div><div class="line">- git config --global user.name <span class="string">"SeayXu"</span> <span class="comment">#设置github用户名</span></div><div class="line">- git config --global user.email SeayXu@163.com <span class="comment">#设置github用户邮箱</span></div><div class="line"><span class="comment"># github仓库操作</span></div><div class="line">- sed -i<span class="string">''</span> <span class="string">"s~git@github.com:SeayXu/seayxu.github.io.git~https://<span class="variable">$&#123;REPO_TOKEN&#125;</span>:x-oauth-basic@github.com/SeayXu/seayxu.github.io.git~"</span> _config.yml</div><div class="line"><span class="comment"># 安装依赖组件</span></div><div class="line">install:</div><div class="line">- npm install</div><div class="line"><span class="comment"># 执行的命令</span></div><div class="line">script:</div><div class="line">- hexo clean</div><div class="line">- hexo generate</div><div class="line"><span class="comment"># 执行的成功后执行 </span></div><div class="line">after_success:</div><div class="line">- hexo deploy</div></pre></td></tr></table></figure>
-<p>完整配置文件可以<a href="https://github.com/SeayXu/seayxu.github.io/blob/dev/.travis.yml~~" target="_blank" rel="external">参考这个</a>。</p>
-<p>转载备用，这个我没配置，因为手上没Lunix系统，等回头装个的虚拟机尝试下，我是用AppVeyor。</p>
-
-          
+          转载自http://blog.csdn.net/xuezhisdc/article/details/53130423
+新建Personal Access Token
+点击右上角头像旁边的三角，在菜单中点击“Setting”，进入设置页面。
+点击左侧栏的最下面的“Personal access tokens”，创建Personal access tokens。
+点击右上角的“Generate new token”，输入用户密码，进入“New personal access token”页面。
+设置Token description（其实就是名称），选择相应的权限，如下图所示。
+点击“Genera
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/使用Travis自动部署hexo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1038,7 +1005,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -1060,7 +1027,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T01:53:59+08:00">
                 2017-08-20
               </time>
             
@@ -1100,19 +1067,22 @@
       
         
           
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>任何人都可以告诉我为什么我把我的文件推送到github时有灰色图标？在应用程序目录中，应该有模型，视图和控制器，但在远程GitHub中，我无法点击。</p>
-<p><img src="https://imgtn.gxnotes.com/images/2017/06/d6b2d26271941e283feba737ea35c3cf.jpg" alt="git,github,github-for-windows"></p>
-<h2 id="最佳解决方案"><a href="#最佳解决方案" class="headerlink" title="最佳解决方案"></a>最佳解决方案</h2><p>看起来你创建了一个子模块，指向一个不可达的远程位置。</p>
-<p>见<a href="https://gxnotes.com/link.php?target=https%3A//stackoverflow.com/questions/14448601/what-does-this-green-icon-mean-in-a-github-repository" target="_blank" rel="external">this answer</a>。该图标在绿色时将指向子模块。因为子模块配置不正确，我认为你的情况是灰色的。</p>
-<p>鉴于<code>.gitmodules</code>不存在，它必须被删除，留下没有远程信息的子模块。</p>
-<p>如果进入<code>app</code>并键入<code>git remote -v</code>，您将看到该模块指向的位置。这个地方目前无法到达。</p>
-<p>在类似的情况下，我添加了一个子模块并删除了<code>.gitmodules</code>。 GitHub的结果如下所示：</p>
-<p><img src="https://imgtn.gxnotes.com/images/2017/06/5e06b01294d7f9b6e5feba0735255969.jpg" alt="git,github,github-for-windows"></p>
-<h2 id="次佳解决方案"><a href="#次佳解决方案" class="headerlink" title="次佳解决方案"></a>次佳解决方案</h2><p>看起来你在文件夹中初始化了git。从子文件夹中删除git文件(rm -rf)，并创建一个新的repo并重新初始化git。</p>
-<h2 id="第三种解决方案"><a href="#第三种解决方案" class="headerlink" title="第三种解决方案"></a>第三种解决方案</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm --cached &lt;folder_name&gt;</div></pre></td></tr></table></figure>
-<p>然后转到父目录，然后执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m <span class="string">"&lt;your_message&gt;"</span></div><div class="line">git push --all</div></pre></td></tr></table></figure>
-          
+          问题描述任何人都可以告诉我为什么我把我的文件推送到github时有灰色图标？在应用程序目录中，应该有模型，视图和控制器，但在远程GitHub中，我无法点击。
+
+最佳解决方案看起来你创建了一个子模块，指向一个不可达的远程位置。
+见this answer。该图标在绿色时将指向子模块。因为子模块配置不正确，我认为你的情况是灰色的。
+鉴于.gitmodules不存在，它必须被删除，留下没有远程信息的子模块。
+如果进入app并键入git remote -v，您将看到该模块指向的位置。这个地方目前无法到达。
+在类似的情况下，我添加了一个子模块并删除了.gitmodules。 GitHub的结果如下所示：
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/远程GitHub中的灰色图标的解决办法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1159,7 +1129,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/GIT相关命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/使用AppVeyor自动部署Hexo到Github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycg31">
@@ -1168,7 +1138,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -1178,7 +1148,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/19/GIT相关命令/" itemprop="url">GIT相关命令</a></h1>
+                <a class="post-title-link" href="/2017/08/19/使用AppVeyor自动部署Hexo到Github/" itemprop="url">使用AppVeyor自动部署Hexo到Github</a></h1>
         
 
         <div class="post-meta">
@@ -1190,7 +1160,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T01:51:34+08:00">
                 2017-08-20
               </time>
             
@@ -1230,19 +1200,16 @@
       
         
           
-            <p>#查看所有分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure></p>
-<p>#查看本地分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch</div></pre></td></tr></table></figure></p>
-<h1 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支"></a>查看远程分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git remote </div><div class="line"></div><div class="line">git remote -v     <span class="comment"># 带详细信息</span></div></pre></td></tr></table></figure>
-<h1 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git remote add [shortname][url]</div><div class="line">git remote add pb git://github.com/paulboone/ticgit.git </div><div class="line"><span class="comment">#名字为pb  地址为git://github.com/paulboone/ticgit.git</span></div></pre></td></tr></table></figure>
-<p>#创建分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch  <span class="built_in">test</span>   <span class="comment">#  text为分支名称</span></div></pre></td></tr></table></figure>
-<h1 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="built_in">test</span></div></pre></td></tr></table></figure>
-<h1 id="当前分支推送到远程分支"><a href="#当前分支推送到远程分支" class="headerlink" title="当前分支推送到远程分支"></a>当前分支推送到远程分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="built_in">test</span></div></pre></td></tr></table></figure>
-<h1 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git branch -d  xxxxx</div><div class="line"></div><div class="line">或 git  br -d  xxxxx</div></pre></td></tr></table></figure>
-<h1 id="删除远程版本"><a href="#删除远程版本" class="headerlink" title="删除远程版本"></a>删除远程版本</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin :br-1.0.0</div></pre></td></tr></table></figure>
-<h1 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git branch -r -d origin/branch-name  </div><div class="line"></div><div class="line">git push origin :branch-name   <span class="comment">#推送一个空的本地分支到远程分支就是删除远程分支</span></div></pre></td></tr></table></figure>
-
-          
+          一、转载别人的教程想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用hexo deploy来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行备份，但是每次更新完博客，需要备份好源文件，然后执行hexo deploy进行发布，是不是很麻烦？换了电脑之后又要重新搭建本地环境，是不是很蛋疼？
+那么接下来我们就来说说如何优雅愉快
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/使用AppVeyor自动部署Hexo到Github/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1298,7 +1265,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -1320,7 +1287,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T01:37:57+08:00">
                 2017-08-20
               </time>
             
@@ -1360,190 +1327,28 @@
       
         
           
-            <p><a href="http://zh.wikipedia.org/wiki/Git" target="_blank" rel="external">Git</a>是目前最流行的<a href="http://www.ruanyifeng.com/blog/2008/12/a_visual_guide_to_version_control.html" target="_blank" rel="external">版本管理系统</a>，学会Git几乎成了开发者的必备技能。</p>
-<p>Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。</p>
-<ul>
-<li>git clone</li>
-<li>git remote</li>
-<li>git fetch</li>
-<li>git pull</li>
-<li>git push</li>
-</ul>
-<p>本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。</p>
-<p><img src="http://image.beekka.com/blog/2014/bg2014061202.jpg" alt="git"></p>
-<h2 id="一、git-clone"><a href="#一、git-clone" class="headerlink" title="一、git clone"></a>一、git clone</h2><p>远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到<code>git clone</code>命令。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git clone &lt;版本库的网址&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>比如，克隆jQuery的版本库。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git clone https://github.com/jquery/jquery.git</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为<code>git clone</code>命令的第二个参数。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git clone &lt;版本库的网址&gt; &lt;本地目录名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p><code>git clone</code>支持多种协议，除了HTTP(s)以外，还支持SSH、Git、本地文件协议等，下面是一些例子。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt; $ git clone http[s]://example.com/path/to/repo.git/</div><div class="line">&gt; $ git clone ssh://example.com/path/to/repo.git/</div><div class="line">&gt; $ git clone git://example.com/path/to/repo.git/</div><div class="line">&gt; $ git clone /opt/git/project.git </div><div class="line">&gt; $ git clone file:///opt/git/project.git</div><div class="line">&gt; $ git clone ftp[s]://example.com/path/to/repo.git/</div><div class="line">&gt; $ git clone rsync://example.com/path/to/repo.git/</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>SSH协议还有另一种写法。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git clone [user@]example.com:path/to/repo.git/</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>通常来说，Git协议下载速度最快，SSH协议用于需要用户认证的场合。各种协议优劣的详细讨论请参考<a href="http://git-scm.com/book/en/Git-on-the-Server-The-Protocols" target="_blank" rel="external">官方文档</a>。</p>
-<h2 id="二、git-remote"><a href="#二、git-remote" class="headerlink" title="二、git remote"></a>二、git remote</h2><p>为了便于管理，Git要求每个远程主机都必须指定一个主机名。<code>git remote</code>命令就用于管理主机名。</p>
-<p>不带选项的时候，<code>git remote</code>命令列出所有远程主机。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; $ git remote</div><div class="line">&gt; origin</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>使用<code>-v</code>选项，可以参看远程主机的网址。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; $ git remote -v</div><div class="line">&gt; origin  git@github.com:jquery/jquery.git (fetch)</div><div class="line">&gt; origin  git@github.com:jquery/jquery.git (push)</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，当前只有一台远程主机，叫做origin，以及它的网址。</p>
-<p>克隆版本库的时候，所使用的远程主机自动被Git命名为<code>origin</code>。如果想用其他的主机名，需要用<code>git clone</code>命令的<code>-o</code>选项指定。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; $ git clone -o jQuery https://github.com/jquery/jquery.git</div><div class="line">&gt; $ git remote</div><div class="line">&gt; jQuery</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，克隆的时候，指定远程主机叫做jQuery。</p>
-<p><code>git remote show</code>命令加上主机名，可以查看该主机的详细信息。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git remote show &lt;主机名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p><code>git remote add</code>命令用于添加远程主机。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git remote add &lt;主机名&gt; &lt;网址&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p><code>git remote rm</code>命令用于删除远程主机。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git remote rm &lt;主机名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p><code>git remote rename</code>命令用于远程主机的改名。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="三、git-fetch"><a href="#三、git-fetch" class="headerlink" title="三、git fetch"></a>三、git fetch</h2><p>一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用到<code>git fetch</code>命令。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git fetch &lt;远程主机名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令将某个远程主机的更新，全部取回本地。</p>
-<p><code>git fetch</code>命令通常用来查看其他人的进程，因为它取回的代码对你本地的开发代码没有影响。</p>
-<p>默认情况下，<code>git fetch</code>取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git fetch &lt;远程主机名&gt; &lt;分支名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>比如，取回<code>origin</code>主机的<code>master</code>分支。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git fetch origin master</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>所取回的更新，在本地主机上要用”远程主机名/分支名”的形式读取。比如<code>origin</code>主机的<code>master</code>，就要用<code>origin/master</code>读取。</p>
-<p><code>git branch</code>命令的<code>-r</code>选项，可以用来查看远程分支，<code>-a</code>选项查看所有分支。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; $ git branch -r</div><div class="line">&gt; origin/master</div><div class="line">&gt;</div><div class="line">&gt; $ git branch -a</div><div class="line">&gt; * master</div><div class="line">&gt;   remotes/origin/master</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，本地主机的当前分支是<code>master</code>，远程分支是<code>origin/master</code>。</p>
-<p>取回远程主机的更新以后，可以在它的基础上，使用<code>git checkout</code>命令创建一个新的分支。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git checkout -b newBrach origin/master</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，在<code>origin/master</code>的基础上，创建一个新分支。</p>
-<p>此外，也可以使用<code>git merge</code>命令或者<code>git rebase</code>命令，在本地分支上合并远程分支。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; $ git merge origin/master</div><div class="line">&gt; # 或者</div><div class="line">&gt; $ git rebase origin/master</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示在当前分支上，合并<code>origin/master</code>。</p>
-<h2 id="四、git-pull"><a href="#四、git-pull" class="headerlink" title="四、git pull"></a>四、git pull</h2><p><code>git pull</code>命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>比如，取回<code>origin</code>主机的<code>next</code>分支，与本地的<code>master</code>分支合并，需要写成下面这样。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git pull origin next:master</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git pull origin next</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，取回<code>origin/next</code>分支，再与当前分支合并。实质上，这等同于先做<code>git fetch</code>，再做<code>git merge</code>。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; $ git fetch origin</div><div class="line">&gt; $ git merge origin/next</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在<code>git clone</code>的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的<code>master</code>分支自动”追踪”<code>origin/master</code>分支。</p>
-<p>Git也允许手动建立追踪关系。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; git branch --set-upstream master origin/next</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令指定<code>master</code>分支追踪<code>origin/next</code>分支。</p>
-<p>如果当前分支与远程分支存在追踪关系，<code>git pull</code>就可以省略远程分支名。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git pull origin</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，本地的当前分支自动与对应的<code>origin</code>主机”追踪分支”（remote-tracking branch）进行合并。</p>
-<p>如果当前分支只有一个追踪分支，连远程主机名都可以省略。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git pull</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，当前分支自动与唯一一个追踪分支进行合并。</p>
-<p>如果合并需要采用rebase模式，可以使用<code>--rebase</code>选项。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git pull --rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>如果远程主机删除了某个分支，默认情况下，<code>git pull</code> 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致<code>git pull</code>不知不觉删除了本地分支。</p>
-<p>但是，你可以改变这个行为，加上参数 <code>-p</code> 就会在本地删除远程已经删除的分支。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; $ git pull -p</div><div class="line">&gt; # 等同于下面的命令</div><div class="line">&gt; $ git fetch --prune origin </div><div class="line">&gt; $ git fetch -p</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="五、git-push"><a href="#五、git-push" class="headerlink" title="五、git push"></a>五、git push</h2><p><code>git push</code>命令用于将本地分支的更新，推送到远程主机。它的格式与<code>git pull</code>命令相仿。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以<code>git pull</code>是&lt;远程分支&gt;:&lt;本地分支&gt;，而<code>git push</code>是&lt;本地分支&gt;:&lt;远程分支&gt;。</p>
-<p>如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push origin master</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，将本地的<code>master</code>分支推送到<code>origin</code>主机的<code>master</code>分支。如果后者不存在，则会被新建。</p>
-<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push origin :master</div><div class="line">&gt; # 等同于</div><div class="line">&gt; $ git push origin --delete master</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示删除<code>origin</code>主机的<code>master</code>分支。</p>
-<p>如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push origin</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，将当前分支推送到<code>origin</code>主机的对应分支。</p>
-<p>如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>如果当前分支与多个主机存在追踪关系，则可以使用<code>-u</code>选项指定一个默认主机，这样后面就可以不加任何参数使用<code>git push</code>。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push -u origin master</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令将本地的<code>master</code>分支推送到<code>origin</code>主机，同时指定<code>origin</code>为默认主机，后面就可以不加任何参数使用<code>git push</code>了。</p>
-<p>不带任何参数的<code>git push</code>，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用<code>git config</code>命令。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; $ git config --global push.default matching</div><div class="line">&gt; # 或者</div><div class="line">&gt; $ git config --global push.default simple</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用<code>--all</code>选项。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push --all origin</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，将所有本地分支都推送到<code>origin</code>主机。</p>
-<p>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做<code>git pull</code>合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用<code>--force</code>选项。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push --force origin </div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令使用<code>--force</code>选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用<code>--force</code>选项。</p>
-<p>最后，<code>git push</code>不会推送标签（tag），除非使用<code>--tags</code>选项。</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; $ git push origin --tags</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-</blockquote>
-<p>（完）</p>
+          Git是目前最流行的版本管理系统，学会Git几乎成了开发者的必备技能。
+Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。
 
-          
+git clone
+git remote
+git fetch
+git pull
+git push
+
+本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。
+
+一、git clone远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。
+
+123&gt;
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/Git远程操作详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1590,7 +1395,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/git pull和clone的区别及用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycg31">
@@ -1599,7 +1404,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="杂记">
     </span>
 
     
@@ -1609,7 +1414,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/19/Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本/" itemprop="url">Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本</a></h1>
+                <a class="post-title-link" href="/2017/08/19/git pull和clone的区别及用法/" itemprop="url">git pull 和 clone的区别及用法</a></h1>
         
 
         <div class="post-meta">
@@ -1621,7 +1426,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T01:36:16+08:00">
                 2017-08-20
               </time>
             
@@ -1661,43 +1466,148 @@
       
         
           
-            <h1 id="Linux-TCP加速工具-——-LotServer-锐速母公司-一键安装脚本"><a href="#Linux-TCP加速工具-——-LotServer-锐速母公司-一键安装脚本" class="headerlink" title="Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本"></a>Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本</h1><p>锐速(ServerSpeeder)可以说是LotServer的马甲，是针对民用的，而LotServer则是针对企业用户的，锐速现在基本上已经关了，而这个LotServer还在持续运营。</p>
-<p><strong>Only for Linux.</strong></p>
-<p><strong>从根本原因上解决锐速断流问题，断流的根本原因是没有完整破解验证机制。</strong></p>
-<ol>
-<li>支持自动检测公网网卡，多个网卡也能区分。</li>
-<li>支持自动适配内核 (需锐速支持)。</li>
-<li>添加询问是否开启accppp功能 (实测并开启后没有效果)。</li>
-<li>默认设置为G口宽带 (听说设置大点可以提高速度)。</li>
-<li>支持一键完全卸载 (此脚本安装的无残留)。</li>
-<li><strong>所需文件均来自 GiuHub，不放心可自行查阅 (完全公开)。</strong></li>
-<li>不支持自动更换内核，请自行更换(网上教程非常多)。</li>
-<li><strong>不支持OpenVZ，不需要尝试，会告诉你找不到网卡。</strong></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">注意：OVZ虚拟化的VPS并不支持锐速加速器的安装，KVM和XEN应该基本都可以。</div></pre></td></tr></table></figure>
-<p><strong>作者博客：<a href="https://moeclub.org/2017/03/08/14/" target="_blank" rel="external">https://moeclub.org/2017/03/08/14/</a></strong></p>
-<p>安装文件 <strong>appex.zip</strong> 为 LotServer 的，(感谢 LotServer 提供安装文件)。</p>
-<p>使用前请日常<code>apt-get update / yum update</code>，欢迎反馈bug(各种安装错误)。</p>
-<p><strong>使用前建议先查看linux支持内核列表，对照一下系统和内核是否可以安装 LotServer！</strong></p>
-<p>服务器使用<code>uname -r</code>命令来查询内核版本，例如返回的是<code>3.2.0-4-amd64</code>，<code>3.2.0-4-amd64</code>就是你的内核版本。</p>
-<blockquote>
-<p>强烈推荐大家使用 <strong>Debian7 x64系统 | 3.2.0-4-amd64内核</strong> ，这个系统和内核无论是锐速、Lotserver还是BBR，除了配置太低的我都没安装失败过！</p>
-</blockquote>
-<h2 id="安装LotServer"><a href="#安装LotServer" class="headerlink" title="安装LotServer"></a>安装LotServer</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -qO /tmp/appex.sh <span class="string">"https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh"</span> &amp;&amp; bash /tmp/appex.sh <span class="string">'install'</span></div></pre></td></tr></table></figure>
-<p>安装一开始的时候，会提示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Press Enter to Continue...</div><div class="line"><span class="comment"># 这个是提示你按回车键继续</span></div></pre></td></tr></table></figure>
-<p>如果安装过程中没问题的话，最后会提示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Accelerate VPN (PPTP,L2TP,etc.)? [n]:</div><div class="line"><span class="comment"># 是否加速VPN</span></div><div class="line"> </div><div class="line">Auto load ServerSpeeder on linux start-up? [y]:</div><div class="line"><span class="comment"># 是否开机启动</span></div><div class="line"> </div><div class="line">Run ServerSpeeder now? [y]:</div><div class="line"><span class="comment"># 是否现在启动锐速</span></div><div class="line"> </div><div class="line"><span class="comment"># 全部默认回车即可。</span></div></pre></td></tr></table></figure>
-<p>最后出现这样的提示就说明安装并启动成功：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[Running Status]</div><div class="line">ServerSpeeder is running!</div><div class="line">version              3.11.20.4</div><div class="line"> </div><div class="line">[License Information]</div><div class="line">License              6001ADDF578B6C0E (valid on current device)</div><div class="line">MaxSession           unlimited</div><div class="line">MaxTcpAccSession     unlimited</div><div class="line">MaxBandwidth(kbps)   1024000</div><div class="line">ExpireDate           2035-12-31</div><div class="line">....</div><div class="line"><span class="comment"># 以下省略....</span></div></pre></td></tr></table></figure>
-<h2 id="卸载LotServer"><a href="#卸载LotServer" class="headerlink" title="卸载LotServer"></a>卸载LotServer</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -qO /tmp/appex.sh <span class="string">"https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh"</span> &amp;&amp; bash /tmp/appex.sh <span class="string">'uninstall'</span></div></pre></td></tr></table></figure>
-<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/appex/bin/serverSpeeder.sh start</div><div class="line"><span class="comment"># 启动 LotServer</span></div><div class="line"> </div><div class="line">/appex/bin/serverSpeeder.sh stop</div><div class="line"><span class="comment"># 停止 LotServer</span></div><div class="line"> </div><div class="line">/appex/bin/serverSpeeder.sh restart</div><div class="line"><span class="comment"># 重启 LotServer</span></div><div class="line"> </div><div class="line">/appex/bin/serverSpeeder.sh status</div><div class="line"><span class="comment"># 状态查询</span></div><div class="line"> </div><div class="line">/appex/bin/serverSpeeder.sh renewLic</div><div class="line"><span class="comment"># 更新许可</span></div></pre></td></tr></table></figure>
-<p><a href="https://github.com/0oVicero0/serverSpeeser_Install" target="_blank" rel="external">代码托管地址</a></p>
-<p><a href="https://github.com/0oVicero0/serverSpeeder_Install/blob/master/lotServer.pdf" target="_blank" rel="external">LotServer 完整使用介绍 PDF手册</a></p>
-<p><strong>安装完了，想要自己修改配置最大化加速效果，那么请看：锐速(ServerSpeeder/LotServer)配置参数简单说明，合理修改配置 提高加速效果</strong></p>
-<p>这个LotServer与锐速(ServerSpeeder)的加速区别并不大，不过91yun的破解版因为破解不完整导致会出现断流等情况，而这个 LotServer 则没有这种问题。</p>
+          一、git pullgit pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。
+完整格式：$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;
+完整格式举例：比如，取回origin主机的next分支，与本地的master分支合并，需要写成下面这样，
+（1）$ git pull origin next:master：如果远程分支是与当前分支合并，则冒号后面的部分可以省略。（2）$ git pull origin next：上面命令表示，取回origin/next分支，再与当前分支合并。实质上，这等同于先做git fetc
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/git pull和clone的区别及用法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/使用Travis-CI自动部署Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ycg31">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杂记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/19/使用Travis-CI自动部署Hexo/" itemprop="url">使用Travis CI自动部署Hexo</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T01:29:43+08:00">
+                2017-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          前两天了解到了一个有趣的概念叫持续集成：
+
+持续集成是一种软件开发实践。在持续集成中，团队成员频繁集成他们的工作成果，一般每人每天至少集成一次，也可以多次。每次集成会经过自动构建（包括自动测试）的检验，以尽快发现集成错误。许多团队发现这种方法可以显著减少集成引起的问题，并可以加快团队合作软件开发的速度。这篇文章简要介绍了持续集成的技巧和它最新的应用。 然后想到我的博客也恰好满足这样的需求，因为我的博客一旦有了修改，就必须要重新build并且部署，那么能不能用持续集成的思想来改造我部署博客的流程呢？
+
+在这样的指导思想下，我完成了上一篇文章：VPS搭配Github Webhook实现Hexo自动
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/19/使用Travis-CI自动部署Hexo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1734,6 +1644,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1769,7 +1683,7 @@
                alt="ycg31" />
           <p class="site-author-name" itemprop="name">ycg31</p>
            
-              <p class="site-description motion-element" itemprop="description">1</p>
+              <p class="site-description motion-element" itemprop="description">有了这个，就不用到处去找重复的了</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -1777,22 +1691,31 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">2</span>
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
@@ -1801,6 +1724,41 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ycg31" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/ycg31" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ycg31" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      微博
+                    
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1851,7 +1809,7 @@
   <div class="theme-info">
     主题 &mdash;
     <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-      NexT.Mist
+      NexT.Pisces
     </a>
   </div>
 
@@ -1937,6 +1895,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
   
     <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
@@ -1982,6 +1947,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
 
 
 
