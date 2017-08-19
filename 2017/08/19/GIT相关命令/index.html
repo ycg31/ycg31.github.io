@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="fewfweeeg">
+<meta name="description" content="#查看所有分支1git branch -a #查看本地分支1git branch 查看远程分支123git remote git remote -v     # 带详细信息 添加远程仓库123git remote add [shortname][url]git remote add pb git://github.com/paulboone/ticgit.git #名字为pb  地址为git://">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2017/08/19/tee/index.html">
+<meta property="og:title" content="GIT相关命令">
+<meta property="og:url" content="http://yoursite.com/2017/08/19/GIT相关命令/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="fewfweeeg">
+<meta property="og:description" content="#查看所有分支1git branch -a #查看本地分支1git branch 查看远程分支123git remote git remote -v     # 带详细信息 添加远程仓库123git remote add [shortname][url]git remote add pb git://github.com/paulboone/ticgit.git #名字为pb  地址为git://">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-19T17:18:13.202Z">
+<meta property="og:updated_time" content="2017-08-19T18:23:45.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="fewfweeeg">
+<meta name="twitter:title" content="GIT相关命令">
+<meta name="twitter:description" content="#查看所有分支1git branch -a #查看本地分支1git branch 查看远程分支123git remote git remote -v     # 带详细信息 添加远程仓库123git remote add [shortname][url]git remote add pb git://github.com/paulboone/ticgit.git #名字为pb  地址为git://">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/19/tee/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/19/GIT相关命令/"/>
 
 
 
 
 
-  <title> | Hexo</title>
+  <title>GIT相关命令 | Hexo</title>
   
 
 
@@ -256,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/tee/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/GIT相关命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ycg31">
@@ -273,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">GIT相关命令</h1>
         
 
         <div class="post-meta">
@@ -285,7 +286,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T01:18:13+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T02:23:45+08:00">
                 2017-08-20
               </time>
             
@@ -323,7 +324,17 @@
       
 
       
-        <p>fewfw<br>eeeg</p>
+        <p>#查看所有分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a</div></pre></td></tr></table></figure></p>
+<p>#查看本地分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch</div></pre></td></tr></table></figure></p>
+<h1 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支"></a>查看远程分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git remote </div><div class="line"></div><div class="line">git remote -v     <span class="comment"># 带详细信息</span></div></pre></td></tr></table></figure>
+<h1 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git remote add [shortname][url]</div><div class="line">git remote add pb git://github.com/paulboone/ticgit.git </div><div class="line"><span class="comment">#名字为pb  地址为git://github.com/paulboone/ticgit.git</span></div></pre></td></tr></table></figure>
+<p>#创建分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch  <span class="built_in">test</span>   <span class="comment">#  text为分支名称</span></div></pre></td></tr></table></figure>
+<h1 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="built_in">test</span></div></pre></td></tr></table></figure>
+<h1 id="当前分支推送到远程分支"><a href="#当前分支推送到远程分支" class="headerlink" title="当前分支推送到远程分支"></a>当前分支推送到远程分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout <span class="built_in">test</span></div></pre></td></tr></table></figure>
+<h1 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git branch -d  xxxxx</div><div class="line"></div><div class="line">或 git  br -d  xxxxx</div></pre></td></tr></table></figure>
+<h1 id="删除远程版本"><a href="#删除远程版本" class="headerlink" title="删除远程版本"></a>删除远程版本</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin :br-1.0.0</div></pre></td></tr></table></figure>
+<h1 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git branch -r -d origin/branch-name  </div><div class="line"></div><div class="line">git push origin :branch-name   <span class="comment">#推送一个空的本地分支到远程分支就是删除远程分支</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -339,6 +350,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
 
       
       
@@ -348,8 +365,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/19/v2ray/" rel="next" title="CentOS6上安装V2ray">
-                <i class="fa fa-chevron-left"></i> CentOS6上安装V2ray
+              <a href="/2017/08/19/Git远程操作详解/" rel="next" title="Git远程操作详解">
+                <i class="fa fa-chevron-left"></i> Git远程操作详解
               </a>
             
           </div>
@@ -357,6 +374,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/19/远程GitHub中的灰色图标的解决办法/" rel="prev" title="远程GitHub中的灰色图标的解决办法">
+                远程GitHub中的灰色图标的解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -408,8 +429,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -424,7 +454,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -432,6 +462,15 @@
 
           
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
@@ -453,6 +492,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查看远程分支"><span class="nav-number">1.</span> <span class="nav-text">查看远程分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">2.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#切换分支"><span class="nav-number">3.</span> <span class="nav-text">切换分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#当前分支推送到远程分支"><span class="nav-number">4.</span> <span class="nav-text">当前分支推送到远程分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除本地分支"><span class="nav-number">5.</span> <span class="nav-text">删除本地分支</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除远程版本"><span class="nav-number">6.</span> <span class="nav-text">删除远程版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除远程分支"><span class="nav-number">7.</span> <span class="nav-text">删除远程分支</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
