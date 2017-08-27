@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="有了这个，就不用到处去找重复的了">
+  <meta name="keyword" content="hexo, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      使用Travis CI自动部署Hexo | 杂记
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+<link rel="stylesheet" href="/css/plugins/search.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+<script src="/js/search.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>杂记</span>
+    </a>
+    <ul class="right-list">
+        <li class="list-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="local-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div id="menu-mask" class="menu-mask">
+      <ul class="menu-list">
+        <li class="menu-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="mobile-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="输入关键词" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '博文',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '未定义',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+<div id="result-wrap" class="ins-search">
+    <div id="local-search-result"></div>
+</div>
+
+<script type="text/javascript">      
+     var search_path = "search.xml";
+     if (search_path.length == 0) {
+      search_path = "search.xml";
+     }
+     var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+     searchFunc(path, 'mobile-search-input', 'local-search-result');
+</script>
+</header>
+
+    <div id="article-banner">
+  <h2>使用Travis CI自动部署Hexo</h2>
+  <p class="post-date">2017-08-20</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><p>前两天了解到了一个有趣的概念叫持续集成：</p>
+<blockquote>
+<p>持续集成是一种软件开发实践。在持续集成中，团队成员频繁集成他们的工作成果，一般每人每天至少集成一次，也可以多次。每次集成会经过自动构建（包括自动测试）的检验，以尽快发现集成错误。许多团队发现这种方法可以显著减少集成引起的问题，并可以加快团队合作软件开发的速度。这篇文章简要介绍了持续集成的技巧和它最新的应用。 然后想到我的博客也恰好满足这样的需求，因为我的博客一旦有了修改，就必须要重新build并且部署，那么能不能用持续集成的思想来改造我部署博客的流程呢？</p>
+</blockquote>
+<p>在这样的指导思想下，我完成了上一篇文章：<a href="https://xuanwo.org/2015/02/05/VPS-Hexo-Autodeploy/" target="_blank" rel="external">VPS搭配Github Webhook实现Hexo自动发布</a>，而今天我要介绍一下，在没有VPS的情况下，如何更方便的配置自己的持续集成的博客。</p>
+<h1 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h1><ul>
+<li>方便：只需要一次配置，便省去了每一次编辑文档后，都需要进行<code>hexo d -g</code>的麻烦，更不必说文章增多之后渲染时间还会增长。</li>
+<li>稳定：这个是最近才发现的，Github被搞了之后，很多人反映不能更新博客了，使用<code>Travis CI</code>，你只要想办法提交一个小md文档，就能进行构建。如果自己手动构建，只要一个文件上传失败，前面的工作都白费了。</li>
+<li>快捷：即使是出差在外，只要能编辑Markdown，就可以撰写博客，使得Hexo拥有类似于WP一致的体验~</li>
+<li>协作：博客的构建完全交由<code>Travis CI</code>进行，所以完全可以通过<code>Hexo</code>+<code>git</code>构建一个多人协作的博客平台。实际上，Hexo的<a href="https://hexo.io/" target="_blank" rel="external">官网</a>正是这样构建的。</li>
+</ul>
+<h1 id="Travis-CI介绍"><a href="#Travis-CI介绍" class="headerlink" title="Travis CI介绍"></a>Travis CI介绍</h1><blockquote>
+<p>Travis CI是在软件开发领域中的一个在线的，分布式的持续集成服务，用来构建及测试在GitHub托管的代码。这个软件的代码同时也是开源的，可以在GitHub上下载到，尽管开发者当前并不推荐在闭源项目中单独使用它。 它提供了多种编程语言的支持，包括Ruby，JavaScript，Java，Scala，PHP，Haskell和Erlang在内的多种语言。许多知名的开源项目使用它来在每次提交的时候进行构建测试，比如Ruby on Rails，Ruby和Node.js。 2012年，Travis CI 决定进行募资以支持后续的开发，在这次募资活动中，许多重量级的科技公司给予了资助。</p>
+</blockquote>
+<p>需要注意的是几个特性：</p>
+<ul>
+<li>只支持Github</li>
+<li>支持JavaScript</li>
+<li>开源，免费</li>
+</ul>
+<p>然后介绍一下它的原理： Travis CI会在你每一次提交之后生成一个虚拟机来执行你事先安排好的build任务，你可以调整这个虚拟机的软件环境，甚至能执行<code>sudo</code>来进行<code>apt-get install</code>。</p>
+<h1 id="Travis-CI配置"><a href="#Travis-CI配置" class="headerlink" title="Travis CI配置"></a>Travis CI配置</h1><p>我们知道，Hexo的命令非常简单，一个<code>hexo d -g</code>就可以搞定。困难之处在于，Travis CI并没有对你的库进行push操作的权限。如果直接将私钥放在自己的开源库之中，这无异于将自己的代码库提交权限开放给了所有的Github使用者。所以，为了保护自己，我们需要采取一些配置操作。</p>
+<p><em>感谢Hexo作者tommy351提供的操作流程，原文可见于用 Travis CI 自動部署網站到 GitHub</em></p>
+<h2 id="Travis-CI使用SSH-连接GitHub"><a href="#Travis-CI使用SSH-连接GitHub" class="headerlink" title="Travis CI使用SSH 连接GitHub"></a>Travis CI使用SSH 连接GitHub</h2><h3 id="生成SSH-Key"><a href="#生成SSH-Key" class="headerlink" title="生成SSH Key"></a>生成SSH Key</h3><p>参见<a href="http://xuanwo.org/2015/02/07/generate-a-ssh-key/" target="_blank" rel="external">使用Github SSH Key以免去Hexo部署时输入密码</a> 需要注意的是，这个SSH key不应成为你账号的全局SSH key<em>（因为这样Travis CI就获得了你所有代码库的提交权限，这是不正确的）</em>，而应该添加至<a href="https://github.com/username/ropename/settings/keys" target="_blank" rel="external">https://github.com/username/ropename/settings/keys</a> ，这样，你就控制了Travis CI的权限。</p>
+<p>###加密私钥</p>
+<p>下面的操作需要事先配置好gem环境，如果没有可以尝试使用<a href="http://xuanwo.org/2014/08/07/Cloud9/" target="_blank" rel="external">强大且配置项丰富的在线IDE应用——Cloud9</a>。</p>
+<h3 id="安装Travis-CI的命令行工具"><a href="#安装Travis-CI的命令行工具" class="headerlink" title="安装Travis CI的命令行工具"></a>安装Travis CI的命令行工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install travis <span class="comment"># 安装travis</span></div></pre></td></tr></table></figure>
+<h3 id="登陆Travis-CI"><a href="#登陆Travis-CI" class="headerlink" title="登陆Travis CI"></a>登陆Travis CI</h3><p>需要输入Github账号和密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">travis login --auto</div></pre></td></tr></table></figure>
+<h3 id="加密私钥并上传至Travis"><a href="#加密私钥并上传至Travis" class="headerlink" title="加密私钥并上传至Travis"></a>加密私钥并上传至Travis</h3><p>正确生成后你会得到两个文件，一个叫<code>ssh_key</code>，一个叫<code>ssh_key.pub</code>。刚才我们将<code>ssh_key.pub</code>添加到了github，下面我们要加密<code>ssh_key</code>这个私钥并且上传到Travis。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">travis encrypt-file ssh_key --add</div></pre></td></tr></table></figure>
+<p>然后Travis的客户端会自动检测当前目录中的git信息，并且添加到<code>.travis.yml</code>中去。在进行此步操作前，目录下要先存在<code>.travis.yml</code>文件，否则会报错。</p>
+<h3 id="指定SSH设置"><a href="#指定SSH设置" class="headerlink" title="指定SSH设置"></a>指定SSH设置</h3><p>在当前目录下新建文件<code>ssh_config</code>，内容为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Host github.com</div><div class="line">  User git</div><div class="line">  StrictHostKeyChecking no</div><div class="line">  IdentityFile ~/.ssh/id_rsa</div><div class="line">  IdentitiesOnly yes</div></pre></td></tr></table></figure>
+<p>然后指定openssl解密后的生成位置，修改Travis自动插入的解密指令(不要照抄，注意修改密钥)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- openssl aes-256-cbc -K <span class="variable">$encrypted_xxxxxxxxxx_key</span> -iv <span class="variable">$encrypted_xxxxxxxxxx_iv</span></div><div class="line">  -<span class="keyword">in</span> travis.enc -out ~/.ssh/id_rsa -d</div></pre></td></tr></table></figure>
+<h3 id="修改目录权限"><a href="#修改目录权限" class="headerlink" title="修改目录权限"></a>修改目录权限</h3><p>紧跟那条解密指令，换行输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- chmod 600 ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+<p>注意yml格式，短杠后面的空格不能省略。</p>
+<h3 id="将密钥加入系统"><a href="#将密钥加入系统" class="headerlink" title="将密钥加入系统"></a>将密钥加入系统</h3><p>紧跟上一步操作，换行输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- <span class="built_in">eval</span> $(ssh-agent)</div><div class="line">- ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+<h3 id="修改git信息"><a href="#修改git信息" class="headerlink" title="修改git信息"></a>修改git信息</h3><p>将之前创建的ssh_config复制到Travis的虚拟机中去，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- cp ssh_config ~/.ssh/config</div></pre></td></tr></table></figure>
+<p>然后指定git使用者信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- git config --global user.name <span class="string">"username"</span></div><div class="line">- git config --global user.email username@example.com</div></pre></td></tr></table></figure>
+<h3 id="Build配置"><a href="#Build配置" class="headerlink" title="Build配置"></a>Build配置</h3><p>之前的所有操作都只是为了让Travis CI拥有push权限，下面我们开始进入到真正的Build配置当中。 之前我们用到了一个名为<code>.travis.yml</code>的文件，跟build有关的所有设置都在这个文件里面，下面的操作都在这个文件当中进行。</p>
+<h3 id="指定环境"><a href="#指定环境" class="headerlink" title="指定环境"></a>指定环境</h3><p>在文件中添加如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">language: node_js</div><div class="line"></div><div class="line">node_js:</div><div class="line">- <span class="string">'0.10'</span>   //指定使用node.js最新的稳定版0.10</div></pre></td></tr></table></figure>
+<h3 id="指定分支"><a href="#指定分支" class="headerlink" title="指定分支"></a>指定分支</h3><p>在文件中添加如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">branches:</div><div class="line">  only:</div><div class="line">  - blog    //这个分支应当使用自己的源文件分支</div></pre></td></tr></table></figure>
+<p>差点忘了讲- -，本方案只适用于用github来托管自己自己的hexo目录的用户。这里的分支应该使用包含有.md文档的那个分支。</p>
+<h3 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h3><p>首先在虚拟机中安装Hexo：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">install:</div><div class="line">- npm install hexo-cli -g</div><div class="line">- npm install hexo --save</div><div class="line">- npm install</div></pre></td></tr></table></figure>
+<p>然后执行Hexo的渲染操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">script:</div><div class="line">- hexo clean   //分开写，方便调试可能出现的错误</div><div class="line">- hexo d</div><div class="line">- hexo g</div></pre></td></tr></table></figure>
+<p>到这里，你的Travis CI的持续集成已经配置完毕了，最后的<code>.travis.yml</code>文件内容可以参考如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">branches:</div><div class="line">  only:</div><div class="line">  - blog <span class="comment"># 这里是你监视的分支，只有blog分支更改才触发自动部署</span></div><div class="line"></div><div class="line">language: node_js</div><div class="line"></div><div class="line">sudo: <span class="literal">false</span></div><div class="line"></div><div class="line">node_js:</div><div class="line">- <span class="string">'0.12'</span> </div><div class="line"></div><div class="line">before_install:</div><div class="line">- openssl aes-256-cbc -K <span class="variable">$encrypted_xxxxxxxxx_key</span> -iv <span class="variable">$encrypted_xxxxxxx_iv</span></div><div class="line">  -<span class="keyword">in</span> doc/travis.enc -out ~/.ssh/id_rsa -d</div><div class="line">- chmod 600 ~/.ssh/id_rsa</div><div class="line">- <span class="built_in">eval</span> $(ssh-agent)</div><div class="line">- ssh-add ~/.ssh/id_rsa</div><div class="line">- cp doc/ssh_config ~/.ssh/config</div><div class="line">- git config --global user.name <span class="string">"yourname"</span></div><div class="line">- git config --global user.email youremail</div><div class="line">- git <span class="built_in">clone</span> -b master git@github.com:yourname/yourrepo.git .deploy_git</div><div class="line"></div><div class="line">install:</div><div class="line">- npm install hexo-cli -g</div><div class="line">- npm install</div><div class="line">- npm install hexo-generator-feed --save</div><div class="line">- npm install hexo-generator-sitemap --save</div><div class="line">- npm install hexo-deployer-git --save</div><div class="line"></div><div class="line">script:</div><div class="line">- hexo clean</div><div class="line">- hexo g</div><div class="line">- hexo d</div></pre></td></tr></table></figure>
+<h2 id="Travis-CI使用Token-连接GitHub"><a href="#Travis-CI使用Token-连接GitHub" class="headerlink" title="Travis CI使用Token 连接GitHub"></a>Travis CI使用Token 连接GitHub</h2><ul>
+<li><h3 id="安装travis"><a href="#安装travis" class="headerlink" title="安装travis"></a><strong>安装travis</strong></h3><p>Travis安装需要Ruby环境，所有需要安装Ruby,并且需要安装rubygems插件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装travis</span></div><div class="line">gem isntall travis</div></pre></td></tr></table></figure>
+</li>
+<li><h3 id="新建配置文件"><a href="#新建配置文件" class="headerlink" title="新建配置文件"></a>新建配置文件</h3><p>首先打开博客项目文件夹，在项目根目录新建<code>.travis.yml</code>配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> 博客项目文件夹根目录</div><div class="line">$ touch .travis.yml</div></pre></td></tr></table></figure>
+</li>
+<li><h3 id="登录travis"><a href="#登录travis" class="headerlink" title="登录travis"></a><strong>登录travis</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">travis login --auto</div></pre></td></tr></table></figure>
+<p>然后会提示输入github的用户名和密码。</p>
+</li>
+<li><h3 id="新建变量"><a href="#新建变量" class="headerlink" title="新建变量"></a><strong>新建变量</strong></h3><p>在项目根目录下执行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 这里的 REPO_TOKEN 是变量名,在后面的配置文件中会用到</span></div><div class="line"><span class="comment"># TOKEN 是上面github生成的Token</span></div><div class="line">travis encrypt <span class="string">'REPO_TOKEN=&lt;TOKEN&gt;'</span> --add</div></pre></td></tr></table></figure>
+<p>此操作会在<code>.travis.yml</code>文件中添加下面的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">env:</div><div class="line">global:</div><div class="line">  secure: fxBE17yzFhC2+FjwVLYbgIhggyfliv3dFCDozTJD7U3n</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h3><p>​      打开Travis配置文件<strong>.travis.yml</strong>，添加如下信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">language: node_js</div><div class="line">node_js:</div><div class="line">- <span class="string">"4"</span>  <span class="comment"># nodejs的版本</span></div><div class="line">branches:</div><div class="line">  only:</div><div class="line">  - dev  <span class="comment"># 设置自动化部署的源码分支</span></div><div class="line">env:</div><div class="line">  global:</div><div class="line">    secure: [加密后的Token]</div><div class="line">before_install:</div><div class="line">- <span class="built_in">export</span> TZ=<span class="string">'Asia/Shanghai'</span>  <span class="comment"># 设置时区</span></div><div class="line">- npm install -g hexo</div><div class="line">- npm install -g hexo-cli</div><div class="line">before_script:</div><div class="line"><span class="comment"># 设置github账户信息</span></div><div class="line">- git config --global user.name <span class="string">"SeayXu"</span> <span class="comment">#设置github用户名</span></div><div class="line">- git config --global user.email SeayXu@163.com <span class="comment">#设置github用户邮箱</span></div><div class="line"><span class="comment"># github仓库操作</span></div><div class="line">- sed -i<span class="string">''</span> <span class="string">"s~git@github.com:SeayXu/seayxu.github.io.git~https://<span class="variable">$&#123;REPO_TOKEN&#125;</span>:x-oauth-basic@github.com/SeayXu/seayxu.github.io.git~"</span> _config.yml</div><div class="line"><span class="comment"># 安装依赖组件</span></div><div class="line">install:</div><div class="line">- npm install</div><div class="line"><span class="comment"># 执行的命令</span></div><div class="line">script:</div><div class="line">- hexo clean</div><div class="line">- hexo generate</div><div class="line"><span class="comment"># 执行的成功后执行 </span></div><div class="line">after_success:</div><div class="line">- hexo deploy</div></pre></td></tr></table></figure>
+<p>完整配置文件可以<a href="https://github.com/SeayXu/seayxu.github.io/blob/dev/.travis.yml~~" target="_blank" rel="external">参考这个</a>。</p>
+<p>转载备用，这个我没配置，因为手上没Lunix系统，等回头装个的虚拟机尝试下，我是用AppVeyor。</p>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#git" >
+    <span class="tag-code">git</span>
+  </a>
+
+  <a href="/tags#hexo" >
+    <span class="tag-code">hexo</span>
+  </a>
+
+  <a href="/tags#Travis" >
+    <span class="tag-code">Travis</span>
+  </a>
+
+      </div>
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    
+      <!-- UY BEGIN -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142069"></script>
+      <!-- UY END -->
+    
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'https://ycg31.oschina.io/2017/08/20/使用Travis-CI自动部署Hexo/';
+    var banner = ''
+    if (banner) {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "使用Travis CI自动部署Hexo",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Mod by <a href="https://github.com/ycg31">ycg31</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
