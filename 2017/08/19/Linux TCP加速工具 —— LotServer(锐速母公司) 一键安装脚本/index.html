@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="有了这个，就不用到处去找重复的了">
+  <meta name="keyword" content="hexo, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本 | 杂记
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+<link rel="stylesheet" href="/css/plugins/search.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+<script src="/js/search.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>杂记</span>
+    </a>
+    <ul class="right-list">
+        <li class="list-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="local-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div id="menu-mask" class="menu-mask">
+      <ul class="menu-list">
+        <li class="menu-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="mobile-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="输入关键词" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '博文',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '未定义',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+<div id="result-wrap" class="ins-search">
+    <div id="local-search-result"></div>
+</div>
+
+<script type="text/javascript">      
+     var search_path = "search.xml";
+     if (search_path.length == 0) {
+      search_path = "search.xml";
+     }
+     var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+     searchFunc(path, 'mobile-search-input', 'local-search-result');
+</script>
+</header>
+
+    <div id="article-banner">
+  <h2>Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本</h2>
+  <p class="post-date">2017-08-19</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="Linux-TCP加速工具-——-LotServer-锐速母公司-一键安装脚本"><a href="#Linux-TCP加速工具-——-LotServer-锐速母公司-一键安装脚本" class="headerlink" title="Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本"></a>Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本</h1><p>锐速(ServerSpeeder)可以说是LotServer的马甲，是针对民用的，而LotServer则是针对企业用户的，锐速现在基本上已经关了，而这个LotServer还在持续运营。</p>
+<p><strong>Only for Linux.</strong></p>
+<p><strong>从根本原因上解决锐速断流问题，断流的根本原因是没有完整破解验证机制。</strong></p>
+<ol>
+<li>支持自动检测公网网卡，多个网卡也能区分。</li>
+<li>支持自动适配内核 (需锐速支持)。</li>
+<li>添加询问是否开启accppp功能 (实测并开启后没有效果)。</li>
+<li>默认设置为G口宽带 (听说设置大点可以提高速度)。</li>
+<li>支持一键完全卸载 (此脚本安装的无残留)。</li>
+<li><strong>所需文件均来自 GiuHub，不放心可自行查阅 (完全公开)。</strong></li>
+<li>不支持自动更换内核，请自行更换(网上教程非常多)。</li>
+<li><strong>不支持OpenVZ，不需要尝试，会告诉你找不到网卡。</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">注意：OVZ虚拟化的VPS并不支持锐速加速器的安装，KVM和XEN应该基本都可以。</div></pre></td></tr></table></figure>
+<p><strong>作者博客：<a href="https://moeclub.org/2017/03/08/14/" target="_blank" rel="external">https://moeclub.org/2017/03/08/14/</a></strong></p>
+<p>安装文件 <strong>appex.zip</strong> 为 LotServer 的，(感谢 LotServer 提供安装文件)。</p>
+<p>使用前请日常<code>apt-get update / yum update</code>，欢迎反馈bug(各种安装错误)。</p>
+<p><strong>使用前建议先查看linux支持内核列表，对照一下系统和内核是否可以安装 LotServer！</strong></p>
+<p>服务器使用<code>uname -r</code>命令来查询内核版本，例如返回的是<code>3.2.0-4-amd64</code>，<code>3.2.0-4-amd64</code>就是你的内核版本。</p>
+<blockquote>
+<p>强烈推荐大家使用 <strong>Debian7 x64系统 | 3.2.0-4-amd64内核</strong> ，这个系统和内核无论是锐速、Lotserver还是BBR，除了配置太低的我都没安装失败过！</p>
+</blockquote>
+<h2 id="安装LotServer"><a href="#安装LotServer" class="headerlink" title="安装LotServer"></a>安装LotServer</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -qO /tmp/appex.sh <span class="string">"https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh"</span> &amp;&amp; bash /tmp/appex.sh <span class="string">'install'</span></div></pre></td></tr></table></figure>
+<p>安装一开始的时候，会提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Press Enter to Continue...</div><div class="line"><span class="comment"># 这个是提示你按回车键继续</span></div></pre></td></tr></table></figure>
+<p>如果安装过程中没问题的话，最后会提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Accelerate VPN (PPTP,L2TP,etc.)? [n]:</div><div class="line"><span class="comment"># 是否加速VPN</span></div><div class="line"> </div><div class="line">Auto load ServerSpeeder on linux start-up? [y]:</div><div class="line"><span class="comment"># 是否开机启动</span></div><div class="line"> </div><div class="line">Run ServerSpeeder now? [y]:</div><div class="line"><span class="comment"># 是否现在启动锐速</span></div><div class="line"> </div><div class="line"><span class="comment"># 全部默认回车即可。</span></div></pre></td></tr></table></figure>
+<p>最后出现这样的提示就说明安装并启动成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[Running Status]</div><div class="line">ServerSpeeder is running!</div><div class="line">version              3.11.20.4</div><div class="line"> </div><div class="line">[License Information]</div><div class="line">License              6001ADDF578B6C0E (valid on current device)</div><div class="line">MaxSession           unlimited</div><div class="line">MaxTcpAccSession     unlimited</div><div class="line">MaxBandwidth(kbps)   1024000</div><div class="line">ExpireDate           2035-12-31</div><div class="line">....</div><div class="line"><span class="comment"># 以下省略....</span></div></pre></td></tr></table></figure>
+<h2 id="卸载LotServer"><a href="#卸载LotServer" class="headerlink" title="卸载LotServer"></a>卸载LotServer</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate -qO /tmp/appex.sh <span class="string">"https://raw.githubusercontent.com/0oVicero0/serverSpeeder_Install/master/appex.sh"</span> &amp;&amp; bash /tmp/appex.sh <span class="string">'uninstall'</span></div></pre></td></tr></table></figure>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/appex/bin/serverSpeeder.sh start</div><div class="line"><span class="comment"># 启动 LotServer</span></div><div class="line"> </div><div class="line">/appex/bin/serverSpeeder.sh stop</div><div class="line"><span class="comment"># 停止 LotServer</span></div><div class="line"> </div><div class="line">/appex/bin/serverSpeeder.sh restart</div><div class="line"><span class="comment"># 重启 LotServer</span></div><div class="line"> </div><div class="line">/appex/bin/serverSpeeder.sh status</div><div class="line"><span class="comment"># 状态查询</span></div><div class="line"> </div><div class="line">/appex/bin/serverSpeeder.sh renewLic</div><div class="line"><span class="comment"># 更新许可</span></div></pre></td></tr></table></figure>
+<p><a href="https://github.com/0oVicero0/serverSpeeser_Install" target="_blank" rel="external">代码托管地址</a></p>
+<p><a href="https://github.com/0oVicero0/serverSpeeder_Install/blob/master/lotServer.pdf" target="_blank" rel="external">LotServer 完整使用介绍 PDF手册</a></p>
+<p><strong>安装完了，想要自己修改配置最大化加速效果，那么请看：锐速(ServerSpeeder/LotServer)配置参数简单说明，合理修改配置 提高加速效果</strong></p>
+<p>这个LotServer与锐速(ServerSpeeder)的加速区别并不大，不过91yun的破解版因为破解不完整导致会出现断流等情况，而这个 LotServer 则没有这种问题。</p>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Linux" >
+    <span class="tag-code">Linux</span>
+  </a>
+
+  <a href="/tags#速锐" >
+    <span class="tag-code">速锐</span>
+  </a>
+
+      </div>
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    
+      <!-- UY BEGIN -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142069"></script>
+      <!-- UY END -->
+    
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'https://ycg31.oschina.io/2017/08/19/Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本/';
+    var banner = ''
+    if (banner) {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "Linux TCP加速工具 —— LotServer(锐速母公司) 一键安装脚本",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Mod by <a href="https://github.com/ycg31">ycg31</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

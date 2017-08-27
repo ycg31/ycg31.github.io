@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="有了这个，就不用到处去找重复的了">
+  <meta name="keyword" content="hexo, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      使用Travis自动部署hexo | 杂记
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+<link rel="stylesheet" href="/css/plugins/search.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+<script src="/js/search.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>杂记</span>
+    </a>
+    <ul class="right-list">
+        <li class="list-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="local-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div id="menu-mask" class="menu-mask">
+      <ul class="menu-list">
+        <li class="menu-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="mobile-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="输入关键词" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '博文',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '未定义',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+<div id="result-wrap" class="ins-search">
+    <div id="local-search-result"></div>
+</div>
+
+<script type="text/javascript">      
+     var search_path = "search.xml";
+     if (search_path.length == 0) {
+      search_path = "search.xml";
+     }
+     var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+     searchFunc(path, 'mobile-search-input', 'local-search-result');
+</script>
+</header>
+
+    <div id="article-banner">
+  <h2>使用Travis自动部署hexo</h2>
+  <p class="post-date">2017-08-20</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><p>转载自<a href="http://blog.csdn.net/xuezhisdc/article/details/53130423" target="_blank" rel="external">http://blog.csdn.net/xuezhisdc/article/details/53130423</a></p>
+<h2 id="新建Personal-Access-Token"><a href="#新建Personal-Access-Token" class="headerlink" title="新建Personal Access Token"></a>新建Personal Access Token</h2><ol>
+<li>点击右上角头像旁边的三角，在菜单中点击“Setting”，进入设置页面。<br><img src="http://img.zhangxuezhi.com/v90uk9inuvo8yjywxj9gm5hjb5.png" alt="img"></li>
+<li>点击左侧栏的最下面的“Personal access tokens”，创建Personal access tokens。<br><img src="http://img.zhangxuezhi.com/syvhuszdqc8zoe5hncv99r8ntg.png" alt="img"></li>
+<li>点击右上角的“Generate new token”，输入用户密码，进入“New personal access token”页面。<br><img src="http://img.zhangxuezhi.com/183vnbiixxadzm7bp75458dc59.png" alt="img"></li>
+<li>设置Token description（其实就是名称），选择相应的权限，如下图所示。<br><img src="http://img.zhangxuezhi.com/brnxrllts6783vig9u5o0903k5.png" alt="img"></li>
+<li>点击“Generate token”按钮，生成Personal access tokens。如下图中红线标注的部分。<strong>注意：这行token只会在刚刚创建完成后显示一次，以后不再显示</strong>。因此，复制并保存到本地。<br><img src="http://img.zhangxuezhi.com/spb4526esm5qmhvocnn24f0i19.png" alt="img"></li>
+</ol>
+<h2 id="配置Travis-CI"><a href="#配置Travis-CI" class="headerlink" title="配置Travis CI"></a>配置Travis CI</h2><h3 id="登录并配置Travis-CI"><a href="#登录并配置Travis-CI" class="headerlink" title="登录并配置Travis CI"></a>登录并配置Travis CI</h3><ul>
+<li>Travis CI是目前新兴的开源持续集成构建项目。可以直接使用GitHub账号登录。</li>
+<li>将鼠标放在用户名上，在弹出的菜单中点击“Accounts”，将会显示你在GitHub上的仓库。如下图所示。<br><img src="http://img.zhangxuezhi.com/yvrv0pcjjw1p29x879ohfhm0od.png" alt="图片名称"></li>
+<li>找到自己的博客项目，点击X号，将其变成√号。再点击右侧的齿轮，进入该仓库的配置页面。<br><img src="http://img.zhangxuezhi.com/ylz1rd42kfubl160tqvemhgs0p.png" alt="img"></li>
+<li>在项目的设置中开启Build only if .travis.yml is present这一项。如下图所示。<br><img src="http://img.zhangxuezhi.com/vw68mu4fmciss8pkc6vgxu1t9b.png" alt="img"></li>
+</ul>
+<h3 id="本地安装Travis"><a href="#本地安装Travis" class="headerlink" title="本地安装Travis"></a>本地安装Travis</h3><ul>
+<li>首先安装Ruby，直接官网下载，双击安装就OK了。</li>
+<li>在Windows下，安装travis之前，需要解决一个问题：<strong>SSL证书问题</strong>，否则不能成功安装。详情请点击该链接：<a href="http://blog.csdn.net/chancein007/article/details/52940032" target="_blank" rel="external">参考教程</a>。</li>
+<li>修复好上述问题后，执行下面的命令安装travis。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装travis</span></div><div class="line">gem isntall travis1212</div></pre></td></tr></table></figure>
+<h3 id="创建并修改配置文件"><a href="#创建并修改配置文件" class="headerlink" title="创建并修改配置文件"></a>创建并修改配置文件</h3><ol>
+<li>打开博客项目文件夹，在项目根目录新建.travis.yml配置文件。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> 博客项目文件夹根目录</div><div class="line">touch .travis.yml1212</div></pre></td></tr></table></figure>
+<ol>
+<li>执行下面的命令，加密上面生成的Personal access tokens，并添加到.travis.yml配置文件。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 这里的 REPO_TOKEN 是变量名,在后面的配置文件中会用到</span></div><div class="line"><span class="comment"># TOKEN 是上面github生成的Token</span></div><div class="line">travis encrypt <span class="string">'REPO_TOKEN=&lt;TOKEN&gt;'</span> --add123123</div></pre></td></tr></table></figure>
+<ol>
+<li>上述命令指向完后，.travis.yml配置文件的内容如下所示。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">env:</div><div class="line">  global:</div><div class="line">    secure: F/gYu+bVe3aWs6YnuB5PNZLEmHH4CGf0najk8JI3/N+SFL0TH8tyYg+O1sXR3EIg.....省略.....iwr5HQG/G3fdL4JcXiAJIm/iH9ndDyGV5EGR1CmseNGNWrwnRZ7tlKE=123123</div></pre></td></tr></table></figure>
+<ol>
+<li>使用本地编辑器打开.travis.yml配置文件，将其修改成如下所示的内容。<strong>注意：有些内容是你自己的!!!</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">language: node_js</div><div class="line">node_js:</div><div class="line">- <span class="string">"4"</span>  <span class="comment"># nodejs的版本</span></div><div class="line">branches:</div><div class="line">  only:</div><div class="line">  - dev  <span class="comment"># 设置自动化部署的源码分支</span></div><div class="line"></div><div class="line"><span class="comment"># ------------------------------------------------</span></div><div class="line"><span class="comment"># 下面是你的Token加密信息，不要替换</span></div><div class="line"><span class="comment"># ------------------------------------------------</span></div><div class="line">env:</div><div class="line">  global:  </div><div class="line">    secure: F/gYu+bVe3aWs6Yn.....省略..../iH9ndDyGV5EGR1CmseNGNWrwnRZ7tlKE=</div><div class="line"></div><div class="line">before_install:</div><div class="line">- <span class="built_in">export</span> TZ=<span class="string">'Asia/Shanghai'</span>  </div><div class="line">- npm install -g hexo</div><div class="line">- npm install -g hexo-cli </div><div class="line">before_script:</div><div class="line"><span class="comment"># ------------------------------------------------</span></div><div class="line"><span class="comment"># 设置github账户信息 注意修改成自己的信息</span></div><div class="line"><span class="comment"># ------------------------------------------------</span></div><div class="line">- git config --global user.name <span class="string">"xuezhisd"</span></div><div class="line">- git config --global user.email xuezhi@126.com </div><div class="line"><span class="comment"># ------------------------------------------------</span></div><div class="line"><span class="comment"># github仓库操作  注意将仓库修改成自己的</span></div><div class="line"><span class="comment"># ------------------------------------------------</span></div><div class="line">- sed -i<span class="string">''</span> <span class="string">"s~git@github.com:xuezhisd/xuezhisd.github.io.git~https://<span class="variable">$&#123;REPO_TOKEN&#125;</span>:x-oauth-basic@github.com/xuezhisd/xuezhisd.github.io.git~"</span> _config.yml</div><div class="line"><span class="comment"># 安装依赖组件</span></div><div class="line">install:</div><div class="line">- npm install</div><div class="line"><span class="comment"># 执行的命令</span></div><div class="line">script:</div><div class="line">- hexo clean</div><div class="line">- hexo generate</div><div class="line"><span class="comment"># 执行的成功后执行 </span></div><div class="line">after_success:</div><div class="line">- hexo deploy12345678910111213141516171819202122232425262728293031323334353637381234567891011121314151617181920212223242526272829303132333435363738</div></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">至此，Travis <span class="keyword">CI</span>已经配置完成了。</div></pre></td></tr></table></figure>
+<h2 id="创建仓库，推送到GitHub"><a href="#创建仓库，推送到GitHub" class="headerlink" title="创建仓库，推送到GitHub"></a>创建仓库，推送到GitHub</h2><ul>
+<li>新建仓库blog。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git init blog</div><div class="line"><span class="built_in">cd</span> blog1212</div></pre></td></tr></table></figure>
+<ul>
+<li>将原来博客目录下的以下内容复制到blog文件夹中。<br><img src="http://img.zhangxuezhi.com/747d3iy0nq4a39mdnpdx57c51a.png" alt="img"></li>
+<li>修改.gitignore文件，取消对node_modules文件夹的忽略。（即删除对应的行）</li>
+<li>关联GitHub上的远程仓库。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将github仓库改为自己的博客仓库</span></div><div class="line">git remote add origin git@github.com:xuezhisd/xuezhisd.github.io.git1212</div></pre></td></tr></table></figure>
+<ul>
+<li>提交本地修改，推送到GitHub上。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 添加文件到暂存区</span></div><div class="line">git add .</div><div class="line"><span class="comment"># 提交修改</span></div><div class="line">git commit -m <span class="string">"test travis"</span></div><div class="line"><span class="comment"># 推送至远程仓库的dev分支</span></div><div class="line">git push -u origin dev123456123456</div></pre></td></tr></table></figure>
+<ul>
+<li>push本地的代码至远程仓库之后，在<a href="https://travis-ci.org/" target="_blank" rel="external">https://travis-ci.org</a> 后台查看相关情况。如果如下图所示，就代表成功了。<br><img src="http://img.zhangxuezhi.com/pkv15sreco6fl4g85v8lzz4uqh.png" alt="图片名称"></li>
+</ul>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#hexo" >
+    <span class="tag-code">hexo</span>
+  </a>
+
+  <a href="/tags#Travis" >
+    <span class="tag-code">Travis</span>
+  </a>
+
+      </div>
+    
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    
+      <!-- UY BEGIN -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142069"></script>
+      <!-- UY END -->
+    
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'https://ycg31.oschina.io/2017/08/19/使用Travis自动部署hexo/';
+    var banner = ''
+    if (banner) {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "使用Travis自动部署hexo",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Mod by <a href="https://github.com/ycg31">ycg31</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
