@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="有了这个，就不用到处去找重复的了">
+  <meta name="keyword" content="hexo, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      使用AppVeyor自动部署Hexo到Github | 杂记
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+<link rel="stylesheet" href="/css/plugins/search.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+<script src="/js/search.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>杂记</span>
+    </a>
+    <ul class="right-list">
+        <li class="list-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="local-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div id="menu-mask" class="menu-mask">
+      <ul class="menu-list">
+        <li class="menu-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="mobile-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="输入关键词" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '博文',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '未定义',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+<div id="result-wrap" class="ins-search">
+    <div id="local-search-result"></div>
+</div>
+
+<script type="text/javascript">      
+     var search_path = "search.xml";
+     if (search_path.length == 0) {
+      search_path = "search.xml";
+     }
+     var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+     searchFunc(path, 'mobile-search-input', 'local-search-result');
+</script>
+</header>
+
+    <div id="article-banner">
+  <h2>使用AppVeyor自动部署Hexo到Github</h2>
+  <p class="post-date">2017-08-20</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一、转载别人的教程"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、转载别人的教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-注册并登陆AppVeyor"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 注册并登陆AppVeyor</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-添加Project"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.  添加Project</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-添加appveyor-yml到Source-Repo"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3.  添加appveyor.yml到Source Repo</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-设置Appveyor"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4. 设置Appveyor</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#折腾过程中遇到的问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">折腾过程中遇到的问题</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content" id="post-content"><h1 id="一、转载别人的教程"><a href="#一、转载别人的教程" class="headerlink" title="一、转载别人的教程"></a>一、转载别人的教程</h1><p>想必很多人会把Hexo生成出来的静态网站放到GitHub Pages来进行托管。一般发布Hexo博客的流程是，首先在本地搭建Hexo的环境，编写新文章，然后利用<code>hexo deploy</code>来发布到Git。那么对于本地的Hexo的原始文件怎么管理呢？如果换电脑了怎么办？如果没有对原始文件进行备份，突然有一天你的本地环境挂了导致源文件丢失，那不就呵呵了。也许你会想到用Dropbox或者其他方案来对源文件进行备份，但是每次更新完博客，需要备份好源文件，然后执行<code>hexo deploy</code>进行发布，是不是很麻烦？换了电脑之后又要重新搭建本地环境，是不是很蛋疼？</p>
+<p>那么接下来我们就来说说如何优雅愉快地对我们的Hexo进行版本管理和发布。</p>
+<p>​      既然我们已经用了GitHub来托管我们生成出来的静态网站，那么为什么不也把Hexo博客的源文件也host在GitHub上呢。那么问题来了，如果我们把Hexo博客的源文件托管在GitHub上，我们的发布流程就会变为：</p>
+<ol>
+<li>执行<code>git push</code>把更新的源文件push到托管源文件的GitHub Repo (我们称之为Source Repo)</li>
+<li>执行<code>hexo deploy</code>来更新托管静态网站的GitHub Pages (我们称之为Content Repo)</li>
+</ol>
+<p>​     这样看来，每次更新博客要经历两个步骤，并不是那么straightforward。那么有没有办法做到既能使用GitHub进行版本控制，又能做到一键发布呢？</p>
+<p>​      答案是肯定的。这里用到了<a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank" rel="external">持续集成</a>也就是我们一直所说的CI来完成一键发布：当有新的change push到Source Repo时，自动执行CI脚本，生成最新的静态网站发布到Content Repo，一气呵成。那么我使用什么CI工具来做呢？我们可以使用像Travis CI这样的Hosted CI Service，也可以使用Jenkins或者TeamCity来搭建CI server。如果自己来搭建CI Server，费时费力，又要花钱来买Server来host CI service，肯定不是一个很好的选择。那么我们选哪个Hosted CI Service呢？其实今年在公司的一个项目中我们就选择了AppVeyor。当初在做investigation的时候，第一个想到的就是用Travis CI，然而我司大多数的开发环境都是Windows，而且当时的项目有Python, PowerShell, Java等，那时PowerShell还只支持Windows，所以需要选择一个支持Windows的CI Service。于是，Scott Hanselman安利的<a href="http://www.hanselman.com/blog/AppVeyorAGoodContinuousIntegrationSystemIsAJoyToBehold.aspx" target="_blank" rel="external">AppVeyor</a>就成为了一个备选。访问<a href="https://www.appveyor.com/" target="_blank" rel="external">AppVeyor官网</a>，映入眼帘的大标题就是<code>#1 Continuous Delivery service for Windows</code>。刚开始的时候内心一阵嘲笑，Top 10的CI Service就你支持Windows，你不是第一那谁是第一？结果在之后的项目使用中，发现AppVeyor比Travis CI好用太多。这里就不具体展开了，继续进入正题。</p>
+<p>​     使用AppVeyor来建立CI非常方便，主要是以下步骤：</p>
+<h2 id="1-注册并登陆AppVeyor"><a href="#1-注册并登陆AppVeyor" class="headerlink" title="1. 注册并登陆AppVeyor"></a>1. 注册并登陆AppVeyor</h2><p>   访问<a href="https://ci.appveyor.com/login" target="_blank" rel="external">AppVeyor登陆页面</a>，使用你的GitHub账号登陆即可。                                        </p>
+<p>   ​</p>
+<p>   <a href="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-login.png" target="_blank" rel="external"><img src="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-login.png" alt="login"></a></p>
+<h2 id="2-添加Project"><a href="#2-添加Project" class="headerlink" title="2.  添加Project"></a>2.  添加Project</h2><p>   在<a href="https://ci.appveyor.com/projects/new" target="_blank" rel="external">AppVeyor Projects页面</a>，添加相应的GitHub Source Repo。                                     </p>
+<p>   ​</p>
+<p>   <a href="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-add-project.png" target="_blank" rel="external"><img src="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-add-project.png" alt="add-project"></a></p>
+<p>   ## </p>
+<h2 id="3-添加appveyor-yml到Source-Repo"><a href="#3-添加appveyor-yml到Source-Repo" class="headerlink" title="3.  添加appveyor.yml到Source Repo"></a>3.  添加appveyor.yml到Source Repo</h2><p>   接下来，你需要把appveyor.yml添加到Source Repo的根目录下。具体的appveyor.yml如下:</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">clone_depth: 5</div><div class="line">environment:</div><div class="line">access_token:</div><div class="line">    secure: [Your GitHub Access Token]</div><div class="line"></div><div class="line">install:</div><div class="line">- node --version</div><div class="line">- npm --version</div><div class="line">- npm install</div><div class="line">- npm install hexo-cli -g</div><div class="line">build_script:</div><div class="line">- hexo generate</div><div class="line"></div><div class="line">artifacts:</div><div class="line">- path: public</div><div class="line">     on_success:</div><div class="line">- git config --global credential.helper store</div><div class="line">- ps: Add-Content <span class="string">"<span class="variable">$env</span>:USERPROFILE\.git-credentials"</span> <span class="string">"https://<span class="variable">$($env:access_token)</span>:x-oauth-basic@github.com`n"</span></div><div class="line">- git config --global user.email <span class="string">"%GIT_USER_EMAIL%"</span></div><div class="line">- git config --global user.name <span class="string">"%GIT_USER_NAME%"</span></div><div class="line">- git <span class="built_in">clone</span> --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site</div><div class="line">- <span class="built_in">cd</span> %TEMP%\static-site</div><div class="line">- del * /f /q</div><div class="line">- <span class="keyword">for</span> /d %%p IN (*) <span class="keyword">do</span> rmdir <span class="string">"%%p"</span> /s /q</div><div class="line">- SETLOCAL EnableDelayedExpansion &amp; robocopy <span class="string">"%APPVEYOR_BUILD_FOLDER%\public"</span> <span class="string">"%TEMP%\static-site"</span> /e &amp; IF !ERRORLEVEL! EQU 1 (<span class="built_in">exit</span> 0) ELSE (IF !ERRORLEVEL! EQU 3 (<span class="built_in">exit</span> 0) ELSE (<span class="built_in">exit</span> 1))</div><div class="line">- git add -A</div><div class="line">- git commit -m <span class="string">"Update Static Site"</span> </div><div class="line">- git push origin %TARGET_BRANCH%</div><div class="line">- appveyor AddMessage <span class="string">"Static Site Updated"</span></div></pre></td></tr></table></figure>
+<p>   你唯一需要做的就是替换[Your GitHub Access Token]，关于生成Access Token，可以参考这篇<a href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/" target="_blank" rel="external">文章</a>。在GitHub生成好Access Token之后，你需要到<a href="https://ci.appveyor.com/tools/encrypt" target="_blank" rel="external">AppVeyor加密页面</a>把Access Token加密之后再替换[Your GitHub Access Token]  </p>
+<p>   ​</p>
+<p>   <a href="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-encrypt.png" target="_blank" rel="external"><img src="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-encrypt.png" alt="encrypt"></a></p>
+<h2 id="4-设置Appveyor"><a href="#4-设置Appveyor" class="headerlink" title="4. 设置Appveyor"></a>4. 设置Appveyor</h2><p>   添加好appveyor.yml之后，再到Appveyor portal设置以下四个变量。STATIC_SITE_REPO就是Content Repo的地址，TARGET_BRANCH就是你Content Repo的branch，一般默认就是master，GIT_USER_EMAIL和GIT_USER_NAME就是你GitHub账号的信息。                                       </p>
+<p>   ​</p>
+<p>   <a href="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-setting.png" target="_blank" rel="external"><img src="https://formulahendry.github.io/assets/img/hexo-ci/appveyor-setting.png" alt="setting"></a></p>
+<p>好了，一切大功告成！试一下<code>git push</code>你的change到Source Repo，几分钟内，你的博客就自动更新了！</p>
+<p>背后的过程如下:</p>
+<ol>
+<li>Git push to Source Repo</li>
+<li>–&gt; AppVeyor CI</li>
+<li>–&gt; Update GitHub Pages Content Repo</li>
+<li>–&gt; Generate your Hexo blog site</li>
+</ol>
+<h1 id="折腾过程中遇到的问题"><a href="#折腾过程中遇到的问题" class="headerlink" title="折腾过程中遇到的问题"></a>折腾过程中遇到的问题</h1><p>部署成功后，所有创建的html文件全部是空的，几经周折才发现，原来是缺少主题文件，所有生成的html文件全是空的，提示错误WARN No layout，再到GitHub上一看，主题文件夹变成了灰色。具体如何解决灰色文件夹可以参考我转载的另一篇文章。</p>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#git" >
+    <span class="tag-code">git</span>
+  </a>
+
+  <a href="/tags#hexo" >
+    <span class="tag-code">hexo</span>
+  </a>
+
+  <a href="/tags#appveyor" >
+    <span class="tag-code">appveyor</span>
+  </a>
+
+      </div>
+    
+    
+<nav id="article-nav">
+    
+        <a href="/2017/08/20/远程GitHub中的灰色图标的解决办法/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">NEWER</strong>
+            <div class="article-nav-title">
+                
+                    远程GitHub中的灰色图标的解决办法
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/08/20/使用Travis-CI自动部署Hexo/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">OLDER</strong>
+            <div class="article-nav-title">使用Travis CI自动部署Hexo</div>
+        </a>
+    
+</nav>
+
+
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+ 
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    
+      <!-- UY BEGIN -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142069"></script>
+      <!-- UY END -->
+    
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'https://ycg31.oschina.io/2017/08/20/使用AppVeyor自动部署Hexo到Github/';
+    var banner = ''
+    if (banner) {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "使用AppVeyor自动部署Hexo到Github",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Mod by <a href="https://github.com/ycg31">ycg31</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

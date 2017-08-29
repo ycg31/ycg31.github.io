@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="有了这个，就不用到处去找重复的了">
+  <meta name="keyword" content="hexo, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Git远程操作详解 | 杂记
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+<link rel="stylesheet" href="/css/plugins/search.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+<script src="/js/search.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>杂记</span>
+    </a>
+    <ul class="right-list">
+        <li class="list-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="local-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div id="menu-mask" class="menu-mask">
+      <ul class="menu-list">
+        <li class="menu-item">   
+          <span class="algolia-autocomplete algolia-autocomplete-right" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="text" id="mobile-search-input" class="search-query st-default-search-input aa-input" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+          </span>
+        </li>
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+<div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="输入关键词" />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '博文',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '未定义',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+<div id="result-wrap" class="ins-search">
+    <div id="local-search-result"></div>
+</div>
+
+<script type="text/javascript">      
+     var search_path = "search.xml";
+     if (search_path.length == 0) {
+      search_path = "search.xml";
+     }
+     var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+     searchFunc(path, 'mobile-search-input', 'local-search-result');
+</script>
+</header>
+
+    <div id="article-banner">
+  <h2>Git远程操作详解</h2>
+  <p class="post-date">2017-08-20</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、git-clone"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、git clone</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、git-remote"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、git remote</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、git-fetch"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、git fetch</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、git-pull"><span class="post-toc-number">4.</span> <span class="post-toc-text">四、git pull</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、git-push"><span class="post-toc-number">5.</span> <span class="post-toc-text">五、git push</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content" id="post-content"><p><a href="http://zh.wikipedia.org/wiki/Git" target="_blank" rel="external">Git</a>是目前最流行的<a href="http://www.ruanyifeng.com/blog/2008/12/a_visual_guide_to_version_control.html" target="_blank" rel="external">版本管理系统</a>，学会Git几乎成了开发者的必备技能。</p>
+<p>Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。</p>
+<ul>
+<li>git clone</li>
+<li>git remote</li>
+<li>git fetch</li>
+<li>git pull</li>
+<li>git push</li>
+</ul>
+<p>本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。</p>
+<p><img src="http://image.beekka.com/blog/2014/bg2014061202.jpg" alt="git"></p>
+<h2 id="一、git-clone"><a href="#一、git-clone" class="headerlink" title="一、git clone"></a>一、git clone</h2><p>远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到<code>git clone</code>命令。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> &lt;版本库的网址&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>比如，克隆jQuery的版本库。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> https://github.com/jquery/jquery.git</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为<code>git clone</code>命令的第二个参数。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> &lt;版本库的网址&gt; &lt;本地目录名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p><code>git clone</code>支持多种协议，除了HTTP(s)以外，还支持SSH、Git、本地文件协议等，下面是一些例子。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> http[s]://example.com/path/to/repo.git/</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> ssh://example.com/path/to/repo.git/</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> git://example.com/path/to/repo.git/</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> /opt/git/project.git </span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> file:///opt/git/project.git</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> ftp[s]://example.com/path/to/repo.git/</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> rsync://example.com/path/to/repo.git/</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>SSH协议还有另一种写法。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> [user@]example.com:path/to/repo.git/</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>通常来说，Git协议下载速度最快，SSH协议用于需要用户认证的场合。各种协议优劣的详细讨论请参考<a href="http://git-scm.com/book/en/Git-on-the-Server-The-Protocols" target="_blank" rel="external">官方文档</a>。</p>
+<h2 id="二、git-remote"><a href="#二、git-remote" class="headerlink" title="二、git remote"></a>二、git remote</h2><p>为了便于管理，Git要求每个远程主机都必须指定一个主机名。<code>git remote</code>命令就用于管理主机名。</p>
+<p>不带选项的时候，<code>git remote</code>命令列出所有远程主机。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git remote</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> origin</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>使用<code>-v</code>选项，可以参看远程主机的网址。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git remote -v</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> origin  git@github.com:jquery/jquery.git (fetch)</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> origin  git@github.com:jquery/jquery.git (push)</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，当前只有一台远程主机，叫做origin，以及它的网址。</p>
+<p>克隆版本库的时候，所使用的远程主机自动被Git命名为<code>origin</code>。如果想用其他的主机名，需要用<code>git clone</code>命令的<code>-o</code>选项指定。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git <span class="built_in">clone</span> -o jQuery https://github.com/jquery/jquery.git</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git remote</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> jQuery</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，克隆的时候，指定远程主机叫做jQuery。</p>
+<p><code>git remote show</code>命令加上主机名，可以查看该主机的详细信息。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git remote show &lt;主机名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p><code>git remote add</code>命令用于添加远程主机。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git remote add &lt;主机名&gt; &lt;网址&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p><code>git remote rm</code>命令用于删除远程主机。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git remote rm &lt;主机名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p><code>git remote rename</code>命令用于远程主机的改名。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="三、git-fetch"><a href="#三、git-fetch" class="headerlink" title="三、git fetch"></a>三、git fetch</h2><p>一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用到<code>git fetch</code>命令。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git fetch &lt;远程主机名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令将某个远程主机的更新，全部取回本地。</p>
+<p><code>git fetch</code>命令通常用来查看其他人的进程，因为它取回的代码对你本地的开发代码没有影响。</p>
+<p>默认情况下，<code>git fetch</code>取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>比如，取回<code>origin</code>主机的<code>master</code>分支。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git fetch origin master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>所取回的更新，在本地主机上要用”远程主机名/分支名”的形式读取。比如<code>origin</code>主机的<code>master</code>，就要用<code>origin/master</code>读取。</p>
+<p><code>git branch</code>命令的<code>-r</code>选项，可以用来查看远程分支，<code>-a</code>选项查看所有分支。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git branch -r</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> origin/master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git branch -a</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> * master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">   remotes/origin/master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，本地主机的当前分支是<code>master</code>，远程分支是<code>origin/master</code>。</p>
+<p>取回远程主机的更新以后，可以在它的基础上，使用<code>git checkout</code>命令创建一个新的分支。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git checkout -b newBrach origin/master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，在<code>origin/master</code>的基础上，创建一个新分支。</p>
+<p>此外，也可以使用<code>git merge</code>命令或者<code>git rebase</code>命令，在本地分支上合并远程分支。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git merge origin/master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># 或者</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git rebase origin/master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示在当前分支上，合并<code>origin/master</code>。</p>
+<h2 id="四、git-pull"><a href="#四、git-pull" class="headerlink" title="四、git pull"></a>四、git pull</h2><p><code>git pull</code>命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>比如，取回<code>origin</code>主机的<code>next</code>分支，与本地的<code>master</code>分支合并，需要写成下面这样。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git pull origin next:master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git pull origin next</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，取回<code>origin/next</code>分支，再与当前分支合并。实质上，这等同于先做<code>git fetch</code>，再做<code>git merge</code>。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git fetch origin</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git merge origin/next</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在<code>git clone</code>的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的<code>master</code>分支自动”追踪”<code>origin/master</code>分支。</p>
+<p>Git也允许手动建立追踪关系。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> git branch --<span class="built_in">set</span>-upstream master origin/next</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令指定<code>master</code>分支追踪<code>origin/next</code>分支。</p>
+<p>如果当前分支与远程分支存在追踪关系，<code>git pull</code>就可以省略远程分支名。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git pull origin</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，本地的当前分支自动与对应的<code>origin</code>主机”追踪分支”（remote-tracking branch）进行合并。</p>
+<p>如果当前分支只有一个追踪分支，连远程主机名都可以省略。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git pull</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，当前分支自动与唯一一个追踪分支进行合并。</p>
+<p>如果合并需要采用rebase模式，可以使用<code>--rebase</code>选项。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git pull --rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>如果远程主机删除了某个分支，默认情况下，<code>git pull</code> 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致<code>git pull</code>不知不觉删除了本地分支。</p>
+<p>但是，你可以改变这个行为，加上参数 <code>-p</code> 就会在本地删除远程已经删除的分支。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git pull -p</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># 等同于下面的命令</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git fetch --prune origin </span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git fetch -p</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="五、git-push"><a href="#五、git-push" class="headerlink" title="五、git push"></a>五、git push</h2><p><code>git push</code>命令用于将本地分支的更新，推送到远程主机。它的格式与<code>git pull</code>命令相仿。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以<code>git pull</code>是&lt;远程分支&gt;:&lt;本地分支&gt;，而<code>git push</code>是&lt;本地分支&gt;:&lt;远程分支&gt;。</p>
+<p>如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push origin master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，将本地的<code>master</code>分支推送到<code>origin</code>主机的<code>master</code>分支。如果后者不存在，则会被新建。</p>
+<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push origin :master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> <span class="comment"># 等同于</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push origin --delete master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示删除<code>origin</code>主机的<code>master</code>分支。</p>
+<p>如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push origin</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，将当前分支推送到<code>origin</code>主机的对应分支。</p>
+<p>如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>如果当前分支与多个主机存在追踪关系，则可以使用<code>-u</code>选项指定一个默认主机，这样后面就可以不加任何参数使用<code>git push</code>。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push -u origin master</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令将本地的<code>master</code>分支推送到<code>origin</code>主机，同时指定<code>origin</code>为默认主机，后面就可以不加任何参数使用<code>git push</code>了。</p>
+<p>不带任何参数的<code>git push</code>，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用<code>git config</code>命令。</p>
+<blockquote>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; $ git<span class="built_in"> config </span>--global push.default matching</div><div class="line">&gt; # 或者</div><div class="line">&gt; $ git<span class="built_in"> config </span>--global push.default simple</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用<code>--all</code>选项。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push --all origin</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令表示，将所有本地分支都推送到<code>origin</code>主机。</p>
+<p>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做<code>git pull</code>合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用<code>--force</code>选项。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push --force origin </span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令使用<code>--force</code>选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用<code>--force</code>选项。</p>
+<p>最后，<code>git push</code>不会推送标签（tag），除非使用<code>--tags</code>选项。</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> $ git push origin --tags</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
+</blockquote>
+<p>（完）</p>
+</section>
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#git" >
+    <span class="tag-code">git</span>
+  </a>
+
+      </div>
+    
+    
+<nav id="article-nav">
+    
+        <a href="/2017/08/20/如何免费打造打造一个安全稳定低延迟超高速的科学上网环境/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">NEWER</strong>
+            <div class="article-nav-title">
+                
+                    如何免费打造打造一个安全稳定低延迟超高速的科学上网环境
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/08/20/git pull和clone的区别及用法/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">OLDER</strong>
+            <div class="article-nav-title">git pull 和 clone的区别及用法</div>
+        </a>
+    
+</nav>
+
+
+    <div class="money-like">
+      <div class="reward-btn">
+        赏
+        <span class="money-code">
+          <span class="wechat-code">
+            <div class="code-image"></div>
+            <b>使用微信打赏</b>
+          </span>
+        </span>
+      </div>
+      <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+    </div>
+    <div class="qrcode">
+      <canvas id="share-qrcode"></canvas>
+ 
+      <p class="notice">扫描二维码，分享此文章</p>
+    </div>
+    
+      <!-- UY BEGIN -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2142069"></script>
+      <!-- UY END -->
+    
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'https://ycg31.oschina.io/2017/08/20/Git远程操作详解/';
+    var banner = ''
+    if (banner) {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png') 
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      var imageW = $(this).width()
+      var imageH = $(this).height()
+      
+      var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+      zoom = zoom < 1 ? 1 : zoom
+      zoom = zoom > 2 ? 2 : zoom
+      var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+      $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+      $('.image-view-wrap').addClass('wrap-active')
+      $('.image-view-wrap img').css({
+        'width': `${imageW}`,
+        'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+      })
+      $('html').css('overflow', 'hidden')
+
+      $('.image-view-wrap').on('click', function() {
+        $(this).remove()
+        $('html').attr('style', '')
+      })
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+
+
+    // gitment
+    var gitmentConfig = "";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        id: "Git远程操作详解",
+        owner: "",
+        repo: "",
+        oauth: {
+          client_id: "",
+          client_secret: ""
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a> | Mod by <a href="https://github.com/ycg31">ycg31</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
